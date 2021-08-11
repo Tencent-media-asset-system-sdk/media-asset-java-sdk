@@ -1,0 +1,194 @@
+syntax = "proto3";
+
+option java_package = "com.mediaassetsdk";
+
+option java_multiple_files = true;
+
+option java_generic_services = false;
+
+
+
+message Error {
+  optional string Code = 1;
+  optional string Message = 2;
+}
+
+message MediaMeta {
+  optional string MediaType = 1;
+  optional string MediaTag = 2;
+  optional string MediaSecondTag = 3;
+  optional string MediaLang = 4;
+}
+
+message FilterBy {
+  optional string MediaNameOrID = 1;
+  repeated string MediaTypeSet = 2;
+  repeated Label MediaTagSet = 3;
+  repeated string StatusSet = 4;
+}
+
+message Category {
+  optional string Type = 1;
+  repeated string TagSet = 2;
+}
+
+message Label {
+  optional string Type = 1;
+  optional string Tag = 2;
+  repeated string SecondTagSet = 3;
+}
+
+message MediaInfo {
+  optional uint64 MediaID = 1;
+  optional string Name = 2;
+  optional uint32 Duration = 3;
+  optional uint32 Size = 4;
+  optional uint32 Width = 5;
+  optional uint32 Height = 6;
+  optional uint32 FPS = 7;
+  optional uint32 BitRate = 8;
+  optional string Format = 9;
+  optional string MediaType = 10;
+  optional string MediaTag = 11;
+  optional string MediaSecondTag = 12;
+  optional string MediaLang = 13;
+  optional string DownLoadURL = 14;
+  optional string Status = 15;
+  optional string FailedReason = 16;
+}
+
+message FailedMediaInfo {
+  optional uint64 MediaID = 1;
+  optional string FailedReason = 2;
+}
+
+message ApplyUploadRequest {
+  optional string Action = 1;
+  optional int32 TIBusinessID = 2;
+  optional int32 TIProjectID = 3;
+  optional string Name = 4;
+  optional MediaMeta MediaMeta = 5;
+  optional string Size = 6;
+  optional string ContentMD5 = 7;
+  optional bool Inner = 8;
+}
+
+message CommitUploadRequest {
+  optional string Action = 1;
+  optional int32 TIBusinessID = 2;
+  optional int32 TIProjectID = 3;
+  optional uint64 MediaID = 4;
+  optional string Key = 5;
+  optional string Bucket = 6;
+  optional string UploadId = 7;  
+}
+
+message DescribeCategoriesRequest {
+  optional string Action = 1;
+  optional int32 TIBusinessID = 2;
+  optional int32 TIProjectID = 3;
+}
+
+message DescribeMediaDetailsRequest {
+  optional string Action = 1;
+  optional int32 TIBusinessID = 2;
+  optional int32 TIProjectID = 3;
+  repeated uint64 MediaIDSet = 4;
+}
+
+message DescribeMediasRequest {
+  optional string Action = 1;
+  optional int32 TIBusinessID = 2;
+  optional int32 TIProjectID = 3;
+  optional int32 PageNumber = 4;
+  optional int32 PageSize = 5;
+  optional bool Inner = 6;
+  optional FilterBy FilterBy = 7;
+}
+
+message ModifyExpireTimeRequest {
+  optional string Action = 1;
+  optional int32 TIBusinessID = 2;
+  optional int32 TIProjectID = 3;
+  optional uint64 MediaID = 4;
+  optional int32 Days = 5;
+}
+
+message ModifyMediaRequest {
+  optional string Action = 1;
+  optional int32 TIBusinessID = 2;
+  optional int32 TIProjectID = 3;
+  optional uint64 MediaID = 4;
+  optional string MediaTag = 5;
+  optional string MediaSecondTag = 6;
+}
+
+message RemoveMediasRequest {
+  optional string Action = 1;
+  optional int32 TIBusinessID = 2;
+  optional int32 TIProjectID = 3;
+  repeated uint64 MediaIDSet = 4;
+}
+
+
+message ApplyUploadResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+  optional uint64 MediaID = 3;
+  optional string Key = 4;
+  optional string Bucket = 5;
+  optional string UploadId = 6;  
+}
+
+message UploadPartResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+  optional string ETag = 3;
+}
+
+message CommitUploadResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+}
+
+message DescribeCategoriesResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+  repeated Category CategorySet = 3;
+  repeated Label LabelSet = 4;
+  repeated string LangSet = 5;
+}
+
+message DescribeMediaDetailsResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+  repeated MediaInfo MediaInfoSet = 3;
+}
+
+message DescribeMediasResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+  repeated MediaInfo MediaInfoSet = 3;
+  optional int32 TotalCount = 4;
+}
+
+message ModifyExpireTimeResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+}
+
+message ModifyMediaResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+}
+
+message RemoveMediasResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+  repeated FailedMediaInfo FailedMediaSet = 3;
+}
+
+message UploadPartRequest {
+  optional bytes Buffer = 1;
+  optional int32 PartNUmber = 2;
+}
