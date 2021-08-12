@@ -28,4 +28,55 @@ public interface UploadPartRequestOrBuilder extends
    * @return The partNUmber.
    */
   int getPartNUmber();
+
+  /**
+   * <code>optional string Bucket = 3;</code>
+   * @return Whether the bucket field is set.
+   */
+  boolean hasBucket();
+  /**
+   * <code>optional string Bucket = 3;</code>
+   * @return The bucket.
+   */
+  java.lang.String getBucket();
+  /**
+   * <code>optional string Bucket = 3;</code>
+   * @return The bytes for bucket.
+   */
+  com.google.protobuf.ByteString
+      getBucketBytes();
+
+  /**
+   * <code>optional string Key = 4;</code>
+   * @return Whether the key field is set.
+   */
+  boolean hasKey();
+  /**
+   * <code>optional string Key = 4;</code>
+   * @return The key.
+   */
+  java.lang.String getKey();
+  /**
+   * <code>optional string Key = 4;</code>
+   * @return The bytes for key.
+   */
+  com.google.protobuf.ByteString
+      getKeyBytes();
+
+  /**
+   * <code>optional string UploadID = 5;</code>
+   * @return Whether the uploadID field is set.
+   */
+  boolean hasUploadID();
+  /**
+   * <code>optional string UploadID = 5;</code>
+   * @return The uploadID.
+   */
+  java.lang.String getUploadID();
+  /**
+   * <code>optional string UploadID = 5;</code>
+   * @return The bytes for uploadID.
+   */
+  com.google.protobuf.ByteString
+      getUploadIDBytes();
 }

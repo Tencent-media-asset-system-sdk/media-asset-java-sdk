@@ -17,6 +17,9 @@ private static final long serialVersionUID = 0L;
   }
   private UploadPartRequest() {
     buffer_ = com.google.protobuf.ByteString.EMPTY;
+    bucket_ = "";
+    key_ = "";
+    uploadID_ = "";
   }
 
   @java.lang.Override
@@ -58,6 +61,24 @@ private static final long serialVersionUID = 0L;
           case 16: {
             bitField0_ |= 0x00000002;
             partNUmber_ = input.readInt32();
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000004;
+            bucket_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000008;
+            key_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000010;
+            uploadID_ = s;
             break;
           }
           default: {
@@ -131,6 +152,144 @@ private static final long serialVersionUID = 0L;
     return partNUmber_;
   }
 
+  public static final int BUCKET_FIELD_NUMBER = 3;
+  private volatile java.lang.Object bucket_;
+  /**
+   * <code>optional string Bucket = 3;</code>
+   * @return Whether the bucket field is set.
+   */
+  @java.lang.Override
+  public boolean hasBucket() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>optional string Bucket = 3;</code>
+   * @return The bucket.
+   */
+  @java.lang.Override
+  public java.lang.String getBucket() {
+    java.lang.Object ref = bucket_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      bucket_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string Bucket = 3;</code>
+   * @return The bytes for bucket.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getBucketBytes() {
+    java.lang.Object ref = bucket_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      bucket_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int KEY_FIELD_NUMBER = 4;
+  private volatile java.lang.Object key_;
+  /**
+   * <code>optional string Key = 4;</code>
+   * @return Whether the key field is set.
+   */
+  @java.lang.Override
+  public boolean hasKey() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <code>optional string Key = 4;</code>
+   * @return The key.
+   */
+  @java.lang.Override
+  public java.lang.String getKey() {
+    java.lang.Object ref = key_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      key_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string Key = 4;</code>
+   * @return The bytes for key.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getKeyBytes() {
+    java.lang.Object ref = key_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      key_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int UPLOADID_FIELD_NUMBER = 5;
+  private volatile java.lang.Object uploadID_;
+  /**
+   * <code>optional string UploadID = 5;</code>
+   * @return Whether the uploadID field is set.
+   */
+  @java.lang.Override
+  public boolean hasUploadID() {
+    return ((bitField0_ & 0x00000010) != 0);
+  }
+  /**
+   * <code>optional string UploadID = 5;</code>
+   * @return The uploadID.
+   */
+  @java.lang.Override
+  public java.lang.String getUploadID() {
+    java.lang.Object ref = uploadID_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      uploadID_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string UploadID = 5;</code>
+   * @return The bytes for uploadID.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getUploadIDBytes() {
+    java.lang.Object ref = uploadID_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      uploadID_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -151,6 +310,15 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeInt32(2, partNUmber_);
     }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, bucket_);
+    }
+    if (((bitField0_ & 0x00000008) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, key_);
+    }
+    if (((bitField0_ & 0x00000010) != 0)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, uploadID_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -167,6 +335,15 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, partNUmber_);
+    }
+    if (((bitField0_ & 0x00000004) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, bucket_);
+    }
+    if (((bitField0_ & 0x00000008) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, key_);
+    }
+    if (((bitField0_ & 0x00000010) != 0)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, uploadID_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -193,6 +370,21 @@ private static final long serialVersionUID = 0L;
       if (getPartNUmber()
           != other.getPartNUmber()) return false;
     }
+    if (hasBucket() != other.hasBucket()) return false;
+    if (hasBucket()) {
+      if (!getBucket()
+          .equals(other.getBucket())) return false;
+    }
+    if (hasKey() != other.hasKey()) return false;
+    if (hasKey()) {
+      if (!getKey()
+          .equals(other.getKey())) return false;
+    }
+    if (hasUploadID() != other.hasUploadID()) return false;
+    if (hasUploadID()) {
+      if (!getUploadID()
+          .equals(other.getUploadID())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -211,6 +403,18 @@ private static final long serialVersionUID = 0L;
     if (hasPartNUmber()) {
       hash = (37 * hash) + PARTNUMBER_FIELD_NUMBER;
       hash = (53 * hash) + getPartNUmber();
+    }
+    if (hasBucket()) {
+      hash = (37 * hash) + BUCKET_FIELD_NUMBER;
+      hash = (53 * hash) + getBucket().hashCode();
+    }
+    if (hasKey()) {
+      hash = (37 * hash) + KEY_FIELD_NUMBER;
+      hash = (53 * hash) + getKey().hashCode();
+    }
+    if (hasUploadID()) {
+      hash = (37 * hash) + UPLOADID_FIELD_NUMBER;
+      hash = (53 * hash) + getUploadID().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -349,6 +553,12 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       partNUmber_ = 0;
       bitField0_ = (bitField0_ & ~0x00000002);
+      bucket_ = "";
+      bitField0_ = (bitField0_ & ~0x00000004);
+      key_ = "";
+      bitField0_ = (bitField0_ & ~0x00000008);
+      uploadID_ = "";
+      bitField0_ = (bitField0_ & ~0x00000010);
       return this;
     }
 
@@ -385,6 +595,18 @@ private static final long serialVersionUID = 0L;
         result.partNUmber_ = partNUmber_;
         to_bitField0_ |= 0x00000002;
       }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        to_bitField0_ |= 0x00000004;
+      }
+      result.bucket_ = bucket_;
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        to_bitField0_ |= 0x00000008;
+      }
+      result.key_ = key_;
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        to_bitField0_ |= 0x00000010;
+      }
+      result.uploadID_ = uploadID_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -439,6 +661,21 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasPartNUmber()) {
         setPartNUmber(other.getPartNUmber());
+      }
+      if (other.hasBucket()) {
+        bitField0_ |= 0x00000004;
+        bucket_ = other.bucket_;
+        onChanged();
+      }
+      if (other.hasKey()) {
+        bitField0_ |= 0x00000008;
+        key_ = other.key_;
+        onChanged();
+      }
+      if (other.hasUploadID()) {
+        bitField0_ |= 0x00000010;
+        uploadID_ = other.uploadID_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -547,6 +784,255 @@ private static final long serialVersionUID = 0L;
     public Builder clearPartNUmber() {
       bitField0_ = (bitField0_ & ~0x00000002);
       partNUmber_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object bucket_ = "";
+    /**
+     * <code>optional string Bucket = 3;</code>
+     * @return Whether the bucket field is set.
+     */
+    public boolean hasBucket() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string Bucket = 3;</code>
+     * @return The bucket.
+     */
+    public java.lang.String getBucket() {
+      java.lang.Object ref = bucket_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        bucket_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string Bucket = 3;</code>
+     * @return The bytes for bucket.
+     */
+    public com.google.protobuf.ByteString
+        getBucketBytes() {
+      java.lang.Object ref = bucket_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        bucket_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string Bucket = 3;</code>
+     * @param value The bucket to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBucket(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+      bucket_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string Bucket = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBucket() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      bucket_ = getDefaultInstance().getBucket();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string Bucket = 3;</code>
+     * @param value The bytes for bucket to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBucketBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000004;
+      bucket_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object key_ = "";
+    /**
+     * <code>optional string Key = 4;</code>
+     * @return Whether the key field is set.
+     */
+    public boolean hasKey() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional string Key = 4;</code>
+     * @return The key.
+     */
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        key_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string Key = 4;</code>
+     * @return The bytes for key.
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string Key = 4;</code>
+     * @param value The key to set.
+     * @return This builder for chaining.
+     */
+    public Builder setKey(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+      key_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string Key = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearKey() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      key_ = getDefaultInstance().getKey();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string Key = 4;</code>
+     * @param value The bytes for key to set.
+     * @return This builder for chaining.
+     */
+    public Builder setKeyBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000008;
+      key_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object uploadID_ = "";
+    /**
+     * <code>optional string UploadID = 5;</code>
+     * @return Whether the uploadID field is set.
+     */
+    public boolean hasUploadID() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>optional string UploadID = 5;</code>
+     * @return The uploadID.
+     */
+    public java.lang.String getUploadID() {
+      java.lang.Object ref = uploadID_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        uploadID_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string UploadID = 5;</code>
+     * @return The bytes for uploadID.
+     */
+    public com.google.protobuf.ByteString
+        getUploadIDBytes() {
+      java.lang.Object ref = uploadID_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uploadID_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string UploadID = 5;</code>
+     * @param value The uploadID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUploadID(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+      uploadID_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string UploadID = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUploadID() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      uploadID_ = getDefaultInstance().getUploadID();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string UploadID = 5;</code>
+     * @param value The bytes for uploadID to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUploadIDBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000010;
+      uploadID_ = value;
       onChanged();
       return this;
     }

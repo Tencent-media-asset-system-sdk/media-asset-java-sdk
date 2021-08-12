@@ -55,6 +55,11 @@ public final class MediaAsset {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ApplyUploadRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UploadPartRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_UploadPartRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_CommitUploadRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -134,11 +139,6 @@ public final class MediaAsset {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_RemoveMediasResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UploadPartRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UploadPartRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -185,81 +185,83 @@ public final class MediaAsset {
       "e\030\006 \001(\tH\005\210\001\001\022\027\n\nContentMD5\030\007 \001(\tH\006\210\001\001\022\022\n" +
       "\005Inner\030\010 \001(\010H\007\210\001\001B\t\n\007_ActionB\017\n\r_TIBusin" +
       "essIDB\016\n\014_TIProjectIDB\007\n\005_NameB\014\n\n_Media" +
-      "MetaB\007\n\005_SizeB\r\n\013_ContentMD5B\010\n\006_Inner\"\213" +
-      "\002\n\023CommitUploadRequest\022\023\n\006Action\030\001 \001(\tH\000" +
+      "MetaB\007\n\005_SizeB\r\n\013_ContentMD5B\010\n\006_Inner\"\271" +
+      "\001\n\021UploadPartRequest\022\023\n\006Buffer\030\001 \001(\014H\000\210\001" +
+      "\001\022\027\n\nPartNUmber\030\002 \001(\005H\001\210\001\001\022\023\n\006Bucket\030\003 \001" +
+      "(\tH\002\210\001\001\022\020\n\003Key\030\004 \001(\tH\003\210\001\001\022\025\n\010UploadID\030\005 " +
+      "\001(\tH\004\210\001\001B\t\n\007_BufferB\r\n\013_PartNUmberB\t\n\007_B" +
+      "ucketB\006\n\004_KeyB\013\n\t_UploadID\"\213\002\n\023CommitUpl" +
+      "oadRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBus" +
+      "inessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H" +
+      "\002\210\001\001\022\024\n\007MediaID\030\004 \001(\004H\003\210\001\001\022\020\n\003Key\030\005 \001(\tH" +
+      "\004\210\001\001\022\023\n\006Bucket\030\006 \001(\tH\005\210\001\001\022\025\n\010UploadId\030\007 " +
+      "\001(\tH\006\210\001\001B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016\n\014" +
+      "_TIProjectIDB\n\n\010_MediaIDB\006\n\004_KeyB\t\n\007_Buc" +
+      "ketB\013\n\t_UploadId\"\221\001\n\031DescribeCategoriesR" +
+      "equest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusines" +
+      "sID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001" +
+      "B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016\n\014_TIProje" +
+      "ctID\"\247\001\n\033DescribeMediaDetailsRequest\022\023\n\006" +
+      "Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H" +
+      "\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\022\n\nMediaI" +
+      "DSet\030\004 \003(\004B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016" +
+      "\n\014_TIProjectID\"\246\002\n\025DescribeMediasRequest" +
+      "\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 " +
+      "\001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\027\n\nPa" +
+      "geNumber\030\004 \001(\005H\003\210\001\001\022\025\n\010PageSize\030\005 \001(\005H\004\210" +
+      "\001\001\022\022\n\005Inner\030\006 \001(\010H\005\210\001\001\022 \n\010FilterBy\030\007 \001(\013" +
+      "2\t.FilterByH\006\210\001\001B\t\n\007_ActionB\017\n\r_TIBusine" +
+      "ssIDB\016\n\014_TIProjectIDB\r\n\013_PageNumberB\013\n\t_" +
+      "PageSizeB\010\n\006_InnerB\013\n\t_FilterBy\"\315\001\n\027Modi" +
+      "fyExpireTimeRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001" +
+      "\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProject" +
+      "ID\030\003 \001(\005H\002\210\001\001\022\024\n\007MediaID\030\004 \001(\004H\003\210\001\001\022\021\n\004D" +
+      "ays\030\005 \001(\005H\004\210\001\001B\t\n\007_ActionB\017\n\r_TIBusiness" +
+      "IDB\016\n\014_TIProjectIDB\n\n\010_MediaIDB\007\n\005_Days\"" +
+      "\200\002\n\022ModifyMediaRequest\022\023\n\006Action\030\001 \001(\tH\000" +
       "\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProj" +
-      "ectID\030\003 \001(\005H\002\210\001\001\022\024\n\007MediaID\030\004 \001(\004H\003\210\001\001\022\020" +
-      "\n\003Key\030\005 \001(\tH\004\210\001\001\022\023\n\006Bucket\030\006 \001(\tH\005\210\001\001\022\025\n" +
-      "\010UploadId\030\007 \001(\tH\006\210\001\001B\t\n\007_ActionB\017\n\r_TIBu" +
-      "sinessIDB\016\n\014_TIProjectIDB\n\n\010_MediaIDB\006\n\004" +
-      "_KeyB\t\n\007_BucketB\013\n\t_UploadId\"\221\001\n\031Describ" +
-      "eCategoriesRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022" +
-      "\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectI" +
-      "D\030\003 \001(\005H\002\210\001\001B\t\n\007_ActionB\017\n\r_TIBusinessID" +
-      "B\016\n\014_TIProjectID\"\247\001\n\033DescribeMediaDetail" +
-      "sRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusin" +
-      "essID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210" +
-      "\001\001\022\022\n\nMediaIDSet\030\004 \003(\004B\t\n\007_ActionB\017\n\r_TI" +
-      "BusinessIDB\016\n\014_TIProjectID\"\246\002\n\025DescribeM" +
-      "ediasRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIB" +
-      "usinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(" +
-      "\005H\002\210\001\001\022\027\n\nPageNumber\030\004 \001(\005H\003\210\001\001\022\025\n\010PageS" +
-      "ize\030\005 \001(\005H\004\210\001\001\022\022\n\005Inner\030\006 \001(\010H\005\210\001\001\022 \n\010Fi" +
-      "lterBy\030\007 \001(\0132\t.FilterByH\006\210\001\001B\t\n\007_ActionB" +
-      "\017\n\r_TIBusinessIDB\016\n\014_TIProjectIDB\r\n\013_Pag" +
-      "eNumberB\013\n\t_PageSizeB\010\n\006_InnerB\013\n\t_Filte" +
-      "rBy\"\315\001\n\027ModifyExpireTimeRequest\022\023\n\006Actio" +
-      "n\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022" +
-      "\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\024\n\007MediaID\030\004 \001" +
-      "(\004H\003\210\001\001\022\021\n\004Days\030\005 \001(\005H\004\210\001\001B\t\n\007_ActionB\017\n" +
-      "\r_TIBusinessIDB\016\n\014_TIProjectIDB\n\n\010_Media" +
-      "IDB\007\n\005_Days\"\200\002\n\022ModifyMediaRequest\022\023\n\006Ac" +
-      "tion\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210" +
-      "\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\024\n\007MediaID\030" +
-      "\004 \001(\004H\003\210\001\001\022\025\n\010MediaTag\030\005 \001(\tH\004\210\001\001\022\033\n\016Med" +
-      "iaSecondTag\030\006 \001(\tH\005\210\001\001B\t\n\007_ActionB\017\n\r_TI" +
-      "BusinessIDB\016\n\014_TIProjectIDB\n\n\010_MediaIDB\013" +
-      "\n\t_MediaTagB\021\n\017_MediaSecondTag\"\237\001\n\023Remov" +
-      "eMediasRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014T" +
-      "IBusinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 " +
-      "\001(\005H\002\210\001\001\022\022\n\nMediaIDSet\030\004 \003(\004B\t\n\007_ActionB" +
-      "\017\n\r_TIBusinessIDB\016\n\014_TIProjectID\"\341\001\n\023App" +
-      "lyUploadResponse\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001" +
-      "\022\032\n\005Error\030\002 \001(\0132\006.ErrorH\001\210\001\001\022\024\n\007MediaID\030" +
-      "\003 \001(\004H\002\210\001\001\022\020\n\003Key\030\004 \001(\tH\003\210\001\001\022\023\n\006Bucket\030\005" +
-      " \001(\tH\004\210\001\001\022\025\n\010UploadId\030\006 \001(\tH\005\210\001\001B\014\n\n_Req" +
-      "uestIDB\010\n\006_ErrorB\n\n\010_MediaIDB\006\n\004_KeyB\t\n\007" +
-      "_BucketB\013\n\t_UploadId\"|\n\022UploadPartRespon" +
-      "se\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 \001(" +
-      "\0132\006.ErrorH\001\210\001\001\022\021\n\004ETag\030\003 \001(\tH\002\210\001\001B\014\n\n_Re" +
-      "questIDB\010\n\006_ErrorB\007\n\005_ETag\"b\n\024CommitUplo" +
-      "adResponse\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Er" +
-      "ror\030\002 \001(\0132\006.ErrorH\001\210\001\001B\014\n\n_RequestIDB\010\n\006" +
-      "_Error\"\263\001\n\032DescribeCategoriesResponse\022\026\n" +
-      "\tRequestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 \001(\0132\006.E" +
-      "rrorH\001\210\001\001\022\036\n\013CategorySet\030\003 \003(\0132\t.Categor" +
-      "y\022\030\n\010LabelSet\030\004 \003(\0132\006.Label\022\017\n\007LangSet\030\005" +
-      " \003(\tB\014\n\n_RequestIDB\010\n\006_Error\"\214\001\n\034Describ" +
-      "eMediaDetailsResponse\022\026\n\tRequestID\030\001 \001(\t" +
-      "H\000\210\001\001\022\032\n\005Error\030\002 \001(\0132\006.ErrorH\001\210\001\001\022 \n\014Med" +
-      "iaInfoSet\030\003 \003(\0132\n.MediaInfoB\014\n\n_RequestI" +
-      "DB\010\n\006_Error\"\256\001\n\026DescribeMediasResponse\022\026" +
+      "ectID\030\003 \001(\005H\002\210\001\001\022\024\n\007MediaID\030\004 \001(\004H\003\210\001\001\022\025" +
+      "\n\010MediaTag\030\005 \001(\tH\004\210\001\001\022\033\n\016MediaSecondTag\030" +
+      "\006 \001(\tH\005\210\001\001B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016" +
+      "\n\014_TIProjectIDB\n\n\010_MediaIDB\013\n\t_MediaTagB" +
+      "\021\n\017_MediaSecondTag\"\237\001\n\023RemoveMediasReque" +
+      "st\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030" +
+      "\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\022\n\n" +
+      "MediaIDSet\030\004 \003(\004B\t\n\007_ActionB\017\n\r_TIBusine" +
+      "ssIDB\016\n\014_TIProjectID\"\341\001\n\023ApplyUploadResp" +
+      "onse\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 " +
+      "\001(\0132\006.ErrorH\001\210\001\001\022\024\n\007MediaID\030\003 \001(\004H\002\210\001\001\022\020" +
+      "\n\003Key\030\004 \001(\tH\003\210\001\001\022\023\n\006Bucket\030\005 \001(\tH\004\210\001\001\022\025\n" +
+      "\010UploadId\030\006 \001(\tH\005\210\001\001B\014\n\n_RequestIDB\010\n\006_E" +
+      "rrorB\n\n\010_MediaIDB\006\n\004_KeyB\t\n\007_BucketB\013\n\t_" +
+      "UploadId\"|\n\022UploadPartResponse\022\026\n\tReques" +
+      "tID\030\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 \001(\0132\006.ErrorH\001\210" +
+      "\001\001\022\021\n\004ETag\030\003 \001(\tH\002\210\001\001B\014\n\n_RequestIDB\010\n\006_" +
+      "ErrorB\007\n\005_ETag\"b\n\024CommitUploadResponse\022\026" +
       "\n\tRequestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 \001(\0132\006." +
-      "ErrorH\001\210\001\001\022 \n\014MediaInfoSet\030\003 \003(\0132\n.Media" +
-      "Info\022\027\n\nTotalCount\030\004 \001(\005H\002\210\001\001B\014\n\n_Reques" +
-      "tIDB\010\n\006_ErrorB\r\n\013_TotalCount\"f\n\030ModifyEx" +
-      "pireTimeResponse\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001" +
-      "\022\032\n\005Error\030\002 \001(\0132\006.ErrorH\001\210\001\001B\014\n\n_Request" +
-      "IDB\010\n\006_Error\"a\n\023ModifyMediaResponse\022\026\n\tR" +
-      "equestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 \001(\0132\006.Err" +
-      "orH\001\210\001\001B\014\n\n_RequestIDB\010\n\006_Error\"\214\001\n\024Remo" +
-      "veMediasResponse\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001" +
-      "\022\032\n\005Error\030\002 \001(\0132\006.ErrorH\001\210\001\001\022(\n\016FailedMe" +
-      "diaSet\030\003 \003(\0132\020.FailedMediaInfoB\014\n\n_Reque" +
-      "stIDB\010\n\006_Error\"[\n\021UploadPartRequest\022\023\n\006B" +
-      "uffer\030\001 \001(\014H\000\210\001\001\022\027\n\nPartNUmber\030\002 \001(\005H\001\210\001" +
-      "\001B\t\n\007_BufferB\r\n\013_PartNUmberB\030\n\021com.media" +
-      "assetsdkP\001\210\001\000b\006proto3"
+      "ErrorH\001\210\001\001B\014\n\n_RequestIDB\010\n\006_Error\"\263\001\n\032D" +
+      "escribeCategoriesResponse\022\026\n\tRequestID\030\001" +
+      " \001(\tH\000\210\001\001\022\032\n\005Error\030\002 \001(\0132\006.ErrorH\001\210\001\001\022\036\n" +
+      "\013CategorySet\030\003 \003(\0132\t.Category\022\030\n\010LabelSe" +
+      "t\030\004 \003(\0132\006.Label\022\017\n\007LangSet\030\005 \003(\tB\014\n\n_Req" +
+      "uestIDB\010\n\006_Error\"\214\001\n\034DescribeMediaDetail" +
+      "sResponse\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Err" +
+      "or\030\002 \001(\0132\006.ErrorH\001\210\001\001\022 \n\014MediaInfoSet\030\003 " +
+      "\003(\0132\n.MediaInfoB\014\n\n_RequestIDB\010\n\006_Error\"" +
+      "\256\001\n\026DescribeMediasResponse\022\026\n\tRequestID\030" +
+      "\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 \001(\0132\006.ErrorH\001\210\001\001\022 " +
+      "\n\014MediaInfoSet\030\003 \003(\0132\n.MediaInfo\022\027\n\nTota" +
+      "lCount\030\004 \001(\005H\002\210\001\001B\014\n\n_RequestIDB\010\n\006_Erro" +
+      "rB\r\n\013_TotalCount\"f\n\030ModifyExpireTimeResp" +
+      "onse\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 " +
+      "\001(\0132\006.ErrorH\001\210\001\001B\014\n\n_RequestIDB\010\n\006_Error" +
+      "\"a\n\023ModifyMediaResponse\022\026\n\tRequestID\030\001 \001" +
+      "(\tH\000\210\001\001\022\032\n\005Error\030\002 \001(\0132\006.ErrorH\001\210\001\001B\014\n\n_" +
+      "RequestIDB\010\n\006_Error\"\214\001\n\024RemoveMediasResp" +
+      "onse\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 " +
+      "\001(\0132\006.ErrorH\001\210\001\001\022(\n\016FailedMediaSet\030\003 \003(\013" +
+      "2\020.FailedMediaInfoB\014\n\n_RequestIDB\010\n\006_Err" +
+      "orB\030\n\021com.mediaassetsdkP\001\210\001\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -313,108 +315,108 @@ public final class MediaAsset {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ApplyUploadRequest_descriptor,
         new java.lang.String[] { "Action", "TIBusinessID", "TIProjectID", "Name", "MediaMeta", "Size", "ContentMD5", "Inner", "Action", "TIBusinessID", "TIProjectID", "Name", "MediaMeta", "Size", "ContentMD5", "Inner", });
-    internal_static_CommitUploadRequest_descriptor =
+    internal_static_UploadPartRequest_descriptor =
       getDescriptor().getMessageTypes().get(8);
+    internal_static_UploadPartRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_UploadPartRequest_descriptor,
+        new java.lang.String[] { "Buffer", "PartNUmber", "Bucket", "Key", "UploadID", "Buffer", "PartNUmber", "Bucket", "Key", "UploadID", });
+    internal_static_CommitUploadRequest_descriptor =
+      getDescriptor().getMessageTypes().get(9);
     internal_static_CommitUploadRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CommitUploadRequest_descriptor,
         new java.lang.String[] { "Action", "TIBusinessID", "TIProjectID", "MediaID", "Key", "Bucket", "UploadId", "Action", "TIBusinessID", "TIProjectID", "MediaID", "Key", "Bucket", "UploadId", });
     internal_static_DescribeCategoriesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_DescribeCategoriesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DescribeCategoriesRequest_descriptor,
         new java.lang.String[] { "Action", "TIBusinessID", "TIProjectID", "Action", "TIBusinessID", "TIProjectID", });
     internal_static_DescribeMediaDetailsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_DescribeMediaDetailsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DescribeMediaDetailsRequest_descriptor,
         new java.lang.String[] { "Action", "TIBusinessID", "TIProjectID", "MediaIDSet", "Action", "TIBusinessID", "TIProjectID", });
     internal_static_DescribeMediasRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_DescribeMediasRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DescribeMediasRequest_descriptor,
         new java.lang.String[] { "Action", "TIBusinessID", "TIProjectID", "PageNumber", "PageSize", "Inner", "FilterBy", "Action", "TIBusinessID", "TIProjectID", "PageNumber", "PageSize", "Inner", "FilterBy", });
     internal_static_ModifyExpireTimeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_ModifyExpireTimeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModifyExpireTimeRequest_descriptor,
         new java.lang.String[] { "Action", "TIBusinessID", "TIProjectID", "MediaID", "Days", "Action", "TIBusinessID", "TIProjectID", "MediaID", "Days", });
     internal_static_ModifyMediaRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_ModifyMediaRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModifyMediaRequest_descriptor,
         new java.lang.String[] { "Action", "TIBusinessID", "TIProjectID", "MediaID", "MediaTag", "MediaSecondTag", "Action", "TIBusinessID", "TIProjectID", "MediaID", "MediaTag", "MediaSecondTag", });
     internal_static_RemoveMediasRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_RemoveMediasRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RemoveMediasRequest_descriptor,
         new java.lang.String[] { "Action", "TIBusinessID", "TIProjectID", "MediaIDSet", "Action", "TIBusinessID", "TIProjectID", });
     internal_static_ApplyUploadResponse_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_ApplyUploadResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ApplyUploadResponse_descriptor,
         new java.lang.String[] { "RequestID", "Error", "MediaID", "Key", "Bucket", "UploadId", "RequestID", "Error", "MediaID", "Key", "Bucket", "UploadId", });
     internal_static_UploadPartResponse_descriptor =
-      getDescriptor().getMessageTypes().get(16);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_UploadPartResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UploadPartResponse_descriptor,
         new java.lang.String[] { "RequestID", "Error", "ETag", "RequestID", "Error", "ETag", });
     internal_static_CommitUploadResponse_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_CommitUploadResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CommitUploadResponse_descriptor,
         new java.lang.String[] { "RequestID", "Error", "RequestID", "Error", });
     internal_static_DescribeCategoriesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_DescribeCategoriesResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DescribeCategoriesResponse_descriptor,
         new java.lang.String[] { "RequestID", "Error", "CategorySet", "LabelSet", "LangSet", "RequestID", "Error", });
     internal_static_DescribeMediaDetailsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(19);
+      getDescriptor().getMessageTypes().get(20);
     internal_static_DescribeMediaDetailsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DescribeMediaDetailsResponse_descriptor,
         new java.lang.String[] { "RequestID", "Error", "MediaInfoSet", "RequestID", "Error", });
     internal_static_DescribeMediasResponse_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(21);
     internal_static_DescribeMediasResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_DescribeMediasResponse_descriptor,
         new java.lang.String[] { "RequestID", "Error", "MediaInfoSet", "TotalCount", "RequestID", "Error", "TotalCount", });
     internal_static_ModifyExpireTimeResponse_descriptor =
-      getDescriptor().getMessageTypes().get(21);
+      getDescriptor().getMessageTypes().get(22);
     internal_static_ModifyExpireTimeResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModifyExpireTimeResponse_descriptor,
         new java.lang.String[] { "RequestID", "Error", "RequestID", "Error", });
     internal_static_ModifyMediaResponse_descriptor =
-      getDescriptor().getMessageTypes().get(22);
+      getDescriptor().getMessageTypes().get(23);
     internal_static_ModifyMediaResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ModifyMediaResponse_descriptor,
         new java.lang.String[] { "RequestID", "Error", "RequestID", "Error", });
     internal_static_RemoveMediasResponse_descriptor =
-      getDescriptor().getMessageTypes().get(23);
+      getDescriptor().getMessageTypes().get(24);
     internal_static_RemoveMediasResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_RemoveMediasResponse_descriptor,
         new java.lang.String[] { "RequestID", "Error", "FailedMediaSet", "RequestID", "Error", });
-    internal_static_UploadPartRequest_descriptor =
-      getDescriptor().getMessageTypes().get(24);
-    internal_static_UploadPartRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UploadPartRequest_descriptor,
-        new java.lang.String[] { "Buffer", "PartNUmber", "Buffer", "PartNUmber", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

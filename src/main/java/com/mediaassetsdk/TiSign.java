@@ -1,4 +1,4 @@
-package com.tisign;
+package com.mediaassetsdk;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

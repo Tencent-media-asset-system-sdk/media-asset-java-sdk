@@ -73,6 +73,15 @@ message ApplyUploadRequest {
   optional bool Inner = 8;
 }
 
+message UploadPartRequest {
+  optional bytes Buffer = 1;
+  optional int32 PartNUmber = 2;
+  optional string Bucket = 3;
+  optional string Key = 4;
+  optional string UploadID = 5;
+}
+
+
 message CommitUploadRequest {
   optional string Action = 1;
   optional int32 TIBusinessID = 2;
@@ -186,9 +195,4 @@ message RemoveMediasResponse {
   optional string RequestID = 1;
   optional Error Error = 2;
   repeated FailedMediaInfo FailedMediaSet = 3;
-}
-
-message UploadPartRequest {
-  optional bytes Buffer = 1;
-  optional int32 PartNUmber = 2;
 }
