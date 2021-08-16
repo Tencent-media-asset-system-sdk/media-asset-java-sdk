@@ -113,7 +113,7 @@ public class UploadMedia {
 			printHelp(args, options);
 			System.exit(-1);
 		}
-		MediaAssetClient client = new MediaAssetClient(host, "", secretID, secretKey, projectID, businessID);
+		MediaAssetClient client = new MediaAssetClient(host, "", secretID, secretKey, businessID, projectID);
 		try {
 			int mediaID = client.uploadFile(file, name, type, tag, secondTag, lang, threads);
 			System.out.printf("Upload %s success, mediaID: %d", file, mediaID);
