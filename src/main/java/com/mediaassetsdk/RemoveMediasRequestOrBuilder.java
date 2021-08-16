@@ -47,19 +47,19 @@ public interface RemoveMediasRequestOrBuilder extends
   int getTIProjectID();
 
   /**
-   * <code>repeated uint64 MediaIDSet = 4;</code>
+   * <code>repeated uint32 MediaIDSet = 4;</code>
    * @return A list containing the mediaIDSet.
    */
-  java.util.List<java.lang.Long> getMediaIDSetList();
+  java.util.List<java.lang.Integer> getMediaIDSetList();
   /**
-   * <code>repeated uint64 MediaIDSet = 4;</code>
+   * <code>repeated uint32 MediaIDSet = 4;</code>
    * @return The count of mediaIDSet.
    */
   int getMediaIDSetCount();
   /**
-   * <code>repeated uint64 MediaIDSet = 4;</code>
+   * <code>repeated uint32 MediaIDSet = 4;</code>
    * @param index The index of the element to return.
    * @return The mediaIDSet at the given index.
    */
-  long getMediaIDSet(int index);
+  int getMediaIDSet(int index);
 }

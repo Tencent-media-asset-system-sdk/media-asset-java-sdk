@@ -8,15 +8,15 @@ public interface MediaInfoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional uint64 MediaID = 1;</code>
+   * <code>optional uint32 MediaID = 1;</code>
    * @return Whether the mediaID field is set.
    */
   boolean hasMediaID();
   /**
-   * <code>optional uint64 MediaID = 1;</code>
+   * <code>optional uint32 MediaID = 1;</code>
    * @return The mediaID.
    */
-  long getMediaID();
+  int getMediaID();
 
   /**
    * <code>optional string Name = 2;</code>

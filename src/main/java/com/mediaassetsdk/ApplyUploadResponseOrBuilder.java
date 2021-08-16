@@ -40,15 +40,15 @@ public interface ApplyUploadResponseOrBuilder extends
   com.mediaassetsdk.ErrorOrBuilder getErrorOrBuilder();
 
   /**
-   * <code>optional uint64 MediaID = 3;</code>
+   * <code>optional uint32 MediaID = 3;</code>
    * @return Whether the mediaID field is set.
    */
   boolean hasMediaID();
   /**
-   * <code>optional uint64 MediaID = 3;</code>
+   * <code>optional uint32 MediaID = 3;</code>
    * @return The mediaID.
    */
-  long getMediaID();
+  int getMediaID();
 
   /**
    * <code>optional string Key = 4;</code>

@@ -162,7 +162,7 @@ public final class MediaAsset {
       "\n\005_Type\"S\n\005Label\022\021\n\004Type\030\001 \001(\tH\000\210\001\001\022\020\n\003T" +
       "ag\030\002 \001(\tH\001\210\001\001\022\024\n\014SecondTagSet\030\003 \003(\tB\007\n\005_" +
       "TypeB\006\n\004_Tag\"\271\004\n\tMediaInfo\022\024\n\007MediaID\030\001 " +
-      "\001(\004H\000\210\001\001\022\021\n\004Name\030\002 \001(\tH\001\210\001\001\022\025\n\010Duration\030" +
+      "\001(\rH\000\210\001\001\022\021\n\004Name\030\002 \001(\tH\001\210\001\001\022\025\n\010Duration\030" +
       "\003 \001(\rH\002\210\001\001\022\021\n\004Size\030\004 \001(\rH\003\210\001\001\022\022\n\005Width\030\005" +
       " \001(\rH\004\210\001\001\022\023\n\006Height\030\006 \001(\rH\005\210\001\001\022\020\n\003FPS\030\007 " +
       "\001(\rH\006\210\001\001\022\024\n\007BitRate\030\010 \001(\rH\007\210\001\001\022\023\n\006Format" +
@@ -176,7 +176,7 @@ public final class MediaAsset {
       "B\014\n\n_MediaTypeB\013\n\t_MediaTagB\021\n\017_MediaSec" +
       "ondTagB\014\n\n_MediaLangB\016\n\014_DownLoadURLB\t\n\007" +
       "_StatusB\017\n\r_FailedReason\"_\n\017FailedMediaI" +
-      "nfo\022\024\n\007MediaID\030\001 \001(\004H\000\210\001\001\022\031\n\014FailedReaso" +
+      "nfo\022\024\n\007MediaID\030\001 \001(\rH\000\210\001\001\022\031\n\014FailedReaso" +
       "n\030\002 \001(\tH\001\210\001\001B\n\n\010_MediaIDB\017\n\r_FailedReaso" +
       "n\"\272\002\n\022ApplyUploadRequest\022\023\n\006Action\030\001 \001(\t" +
       "H\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIPr" +
@@ -193,7 +193,7 @@ public final class MediaAsset {
       "ucketB\006\n\004_KeyB\013\n\t_UploadID\"\213\002\n\023CommitUpl" +
       "oadRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBus" +
       "inessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H" +
-      "\002\210\001\001\022\024\n\007MediaID\030\004 \001(\004H\003\210\001\001\022\020\n\003Key\030\005 \001(\tH" +
+      "\002\210\001\001\022\024\n\007MediaID\030\004 \001(\rH\003\210\001\001\022\020\n\003Key\030\005 \001(\tH" +
       "\004\210\001\001\022\023\n\006Bucket\030\006 \001(\tH\005\210\001\001\022\025\n\010UploadId\030\007 " +
       "\001(\tH\006\210\001\001B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016\n\014" +
       "_TIProjectIDB\n\n\010_MediaIDB\006\n\004_KeyB\t\n\007_Buc" +
@@ -204,7 +204,7 @@ public final class MediaAsset {
       "ctID\"\247\001\n\033DescribeMediaDetailsRequest\022\023\n\006" +
       "Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H" +
       "\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\022\n\nMediaI" +
-      "DSet\030\004 \003(\004B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016" +
+      "DSet\030\004 \003(\rB\t\n\007_ActionB\017\n\r_TIBusinessIDB\016" +
       "\n\014_TIProjectID\"\246\002\n\025DescribeMediasRequest" +
       "\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 " +
       "\001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\027\n\nPa" +
@@ -215,22 +215,22 @@ public final class MediaAsset {
       "PageSizeB\010\n\006_InnerB\013\n\t_FilterBy\"\315\001\n\027Modi" +
       "fyExpireTimeRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001" +
       "\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProject" +
-      "ID\030\003 \001(\005H\002\210\001\001\022\024\n\007MediaID\030\004 \001(\004H\003\210\001\001\022\021\n\004D" +
+      "ID\030\003 \001(\005H\002\210\001\001\022\024\n\007MediaID\030\004 \001(\rH\003\210\001\001\022\021\n\004D" +
       "ays\030\005 \001(\005H\004\210\001\001B\t\n\007_ActionB\017\n\r_TIBusiness" +
       "IDB\016\n\014_TIProjectIDB\n\n\010_MediaIDB\007\n\005_Days\"" +
       "\200\002\n\022ModifyMediaRequest\022\023\n\006Action\030\001 \001(\tH\000" +
       "\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProj" +
-      "ectID\030\003 \001(\005H\002\210\001\001\022\024\n\007MediaID\030\004 \001(\004H\003\210\001\001\022\025" +
+      "ectID\030\003 \001(\005H\002\210\001\001\022\024\n\007MediaID\030\004 \001(\rH\003\210\001\001\022\025" +
       "\n\010MediaTag\030\005 \001(\tH\004\210\001\001\022\033\n\016MediaSecondTag\030" +
       "\006 \001(\tH\005\210\001\001B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016" +
       "\n\014_TIProjectIDB\n\n\010_MediaIDB\013\n\t_MediaTagB" +
       "\021\n\017_MediaSecondTag\"\237\001\n\023RemoveMediasReque" +
       "st\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030" +
       "\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\022\n\n" +
-      "MediaIDSet\030\004 \003(\004B\t\n\007_ActionB\017\n\r_TIBusine" +
+      "MediaIDSet\030\004 \003(\rB\t\n\007_ActionB\017\n\r_TIBusine" +
       "ssIDB\016\n\014_TIProjectID\"\341\001\n\023ApplyUploadResp" +
       "onse\022\026\n\tRequestID\030\001 \001(\tH\000\210\001\001\022\032\n\005Error\030\002 " +
-      "\001(\0132\006.ErrorH\001\210\001\001\022\024\n\007MediaID\030\003 \001(\004H\002\210\001\001\022\020" +
+      "\001(\0132\006.ErrorH\001\210\001\001\022\024\n\007MediaID\030\003 \001(\rH\002\210\001\001\022\020" +
       "\n\003Key\030\004 \001(\tH\003\210\001\001\022\023\n\006Bucket\030\005 \001(\tH\004\210\001\001\022\025\n" +
       "\010UploadId\030\006 \001(\tH\005\210\001\001B\014\n\n_RequestIDB\010\n\006_E" +
       "rrorB\n\n\010_MediaIDB\006\n\004_KeyB\t\n\007_BucketB\013\n\t_" +

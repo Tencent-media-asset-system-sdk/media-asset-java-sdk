@@ -47,15 +47,15 @@ public interface CommitUploadRequestOrBuilder extends
   int getTIProjectID();
 
   /**
-   * <code>optional uint64 MediaID = 4;</code>
+   * <code>optional uint32 MediaID = 4;</code>
    * @return Whether the mediaID field is set.
    */
   boolean hasMediaID();
   /**
-   * <code>optional uint64 MediaID = 4;</code>
+   * <code>optional uint32 MediaID = 4;</code>
    * @return The mediaID.
    */
-  long getMediaID();
+  int getMediaID();
 
   /**
    * <code>optional string Key = 5;</code>

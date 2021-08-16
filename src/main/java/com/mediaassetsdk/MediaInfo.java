@@ -60,7 +60,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
             bitField0_ |= 0x00000001;
-            mediaID_ = input.readUInt64();
+            mediaID_ = input.readUInt32();
             break;
           }
           case 18: {
@@ -181,9 +181,9 @@ private static final long serialVersionUID = 0L;
 
   private int bitField0_;
   public static final int MEDIAID_FIELD_NUMBER = 1;
-  private long mediaID_;
+  private int mediaID_;
   /**
-   * <code>optional uint64 MediaID = 1;</code>
+   * <code>optional uint32 MediaID = 1;</code>
    * @return Whether the mediaID field is set.
    */
   @java.lang.Override
@@ -191,11 +191,11 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>optional uint64 MediaID = 1;</code>
+   * <code>optional uint32 MediaID = 1;</code>
    * @return The mediaID.
    */
   @java.lang.Override
-  public long getMediaID() {
+  public int getMediaID() {
     return mediaID_;
   }
 
@@ -742,7 +742,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeUInt64(1, mediaID_);
+      output.writeUInt32(1, mediaID_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
@@ -800,7 +800,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, mediaID_);
+        .computeUInt32Size(1, mediaID_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -961,8 +961,7 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     if (hasMediaID()) {
       hash = (37 * hash) + MEDIAID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getMediaID());
+      hash = (53 * hash) + getMediaID();
     }
     if (hasName()) {
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -1157,7 +1156,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      mediaID_ = 0L;
+      mediaID_ = 0;
       bitField0_ = (bitField0_ & ~0x00000001);
       name_ = "";
       bitField0_ = (bitField0_ & ~0x00000002);
@@ -1426,9 +1425,9 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long mediaID_ ;
+    private int mediaID_ ;
     /**
-     * <code>optional uint64 MediaID = 1;</code>
+     * <code>optional uint32 MediaID = 1;</code>
      * @return Whether the mediaID field is set.
      */
     @java.lang.Override
@@ -1436,31 +1435,31 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional uint64 MediaID = 1;</code>
+     * <code>optional uint32 MediaID = 1;</code>
      * @return The mediaID.
      */
     @java.lang.Override
-    public long getMediaID() {
+    public int getMediaID() {
       return mediaID_;
     }
     /**
-     * <code>optional uint64 MediaID = 1;</code>
+     * <code>optional uint32 MediaID = 1;</code>
      * @param value The mediaID to set.
      * @return This builder for chaining.
      */
-    public Builder setMediaID(long value) {
+    public Builder setMediaID(int value) {
       bitField0_ |= 0x00000001;
       mediaID_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional uint64 MediaID = 1;</code>
+     * <code>optional uint32 MediaID = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearMediaID() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      mediaID_ = 0L;
+      mediaID_ = 0;
       onChanged();
       return this;
     }

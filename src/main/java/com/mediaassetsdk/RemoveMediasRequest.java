@@ -17,7 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private RemoveMediasRequest() {
     action_ = "";
-    mediaIDSet_ = emptyLongList();
+    mediaIDSet_ = emptyIntList();
   }
 
   @java.lang.Override
@@ -69,21 +69,21 @@ private static final long serialVersionUID = 0L;
           }
           case 32: {
             if (!((mutable_bitField0_ & 0x00000008) != 0)) {
-              mediaIDSet_ = newLongList();
+              mediaIDSet_ = newIntList();
               mutable_bitField0_ |= 0x00000008;
             }
-            mediaIDSet_.addLong(input.readUInt64());
+            mediaIDSet_.addInt(input.readUInt32());
             break;
           }
           case 34: {
             int length = input.readRawVarint32();
             int limit = input.pushLimit(length);
             if (!((mutable_bitField0_ & 0x00000008) != 0) && input.getBytesUntilLimit() > 0) {
-              mediaIDSet_ = newLongList();
+              mediaIDSet_ = newIntList();
               mutable_bitField0_ |= 0x00000008;
             }
             while (input.getBytesUntilLimit() > 0) {
-              mediaIDSet_.addLong(input.readUInt64());
+              mediaIDSet_.addInt(input.readUInt32());
             }
             input.popLimit(limit);
             break;
@@ -209,30 +209,30 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int MEDIAIDSET_FIELD_NUMBER = 4;
-  private com.google.protobuf.Internal.LongList mediaIDSet_;
+  private com.google.protobuf.Internal.IntList mediaIDSet_;
   /**
-   * <code>repeated uint64 MediaIDSet = 4;</code>
+   * <code>repeated uint32 MediaIDSet = 4;</code>
    * @return A list containing the mediaIDSet.
    */
   @java.lang.Override
-  public java.util.List<java.lang.Long>
+  public java.util.List<java.lang.Integer>
       getMediaIDSetList() {
     return mediaIDSet_;
   }
   /**
-   * <code>repeated uint64 MediaIDSet = 4;</code>
+   * <code>repeated uint32 MediaIDSet = 4;</code>
    * @return The count of mediaIDSet.
    */
   public int getMediaIDSetCount() {
     return mediaIDSet_.size();
   }
   /**
-   * <code>repeated uint64 MediaIDSet = 4;</code>
+   * <code>repeated uint32 MediaIDSet = 4;</code>
    * @param index The index of the element to return.
    * @return The mediaIDSet at the given index.
    */
-  public long getMediaIDSet(int index) {
-    return mediaIDSet_.getLong(index);
+  public int getMediaIDSet(int index) {
+    return mediaIDSet_.getInt(index);
   }
   private int mediaIDSetMemoizedSerializedSize = -1;
 
@@ -265,7 +265,7 @@ private static final long serialVersionUID = 0L;
       output.writeUInt32NoTag(mediaIDSetMemoizedSerializedSize);
     }
     for (int i = 0; i < mediaIDSet_.size(); i++) {
-      output.writeUInt64NoTag(mediaIDSet_.getLong(i));
+      output.writeUInt32NoTag(mediaIDSet_.getInt(i));
     }
     unknownFields.writeTo(output);
   }
@@ -291,7 +291,7 @@ private static final long serialVersionUID = 0L;
       int dataSize = 0;
       for (int i = 0; i < mediaIDSet_.size(); i++) {
         dataSize += com.google.protobuf.CodedOutputStream
-          .computeUInt64SizeNoTag(mediaIDSet_.getLong(i));
+          .computeUInt32SizeNoTag(mediaIDSet_.getInt(i));
       }
       size += dataSize;
       if (!getMediaIDSetList().isEmpty()) {
@@ -499,7 +499,7 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000002);
       tIProjectID_ = 0;
       bitField0_ = (bitField0_ & ~0x00000004);
-      mediaIDSet_ = emptyLongList();
+      mediaIDSet_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000008);
       return this;
     }
@@ -807,7 +807,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.Internal.LongList mediaIDSet_ = emptyLongList();
+    private com.google.protobuf.Internal.IntList mediaIDSet_ = emptyIntList();
     private void ensureMediaIDSetIsMutable() {
       if (!((bitField0_ & 0x00000008) != 0)) {
         mediaIDSet_ = mutableCopy(mediaIDSet_);
@@ -815,60 +815,60 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
-     * <code>repeated uint64 MediaIDSet = 4;</code>
+     * <code>repeated uint32 MediaIDSet = 4;</code>
      * @return A list containing the mediaIDSet.
      */
-    public java.util.List<java.lang.Long>
+    public java.util.List<java.lang.Integer>
         getMediaIDSetList() {
       return ((bitField0_ & 0x00000008) != 0) ?
                java.util.Collections.unmodifiableList(mediaIDSet_) : mediaIDSet_;
     }
     /**
-     * <code>repeated uint64 MediaIDSet = 4;</code>
+     * <code>repeated uint32 MediaIDSet = 4;</code>
      * @return The count of mediaIDSet.
      */
     public int getMediaIDSetCount() {
       return mediaIDSet_.size();
     }
     /**
-     * <code>repeated uint64 MediaIDSet = 4;</code>
+     * <code>repeated uint32 MediaIDSet = 4;</code>
      * @param index The index of the element to return.
      * @return The mediaIDSet at the given index.
      */
-    public long getMediaIDSet(int index) {
-      return mediaIDSet_.getLong(index);
+    public int getMediaIDSet(int index) {
+      return mediaIDSet_.getInt(index);
     }
     /**
-     * <code>repeated uint64 MediaIDSet = 4;</code>
+     * <code>repeated uint32 MediaIDSet = 4;</code>
      * @param index The index to set the value at.
      * @param value The mediaIDSet to set.
      * @return This builder for chaining.
      */
     public Builder setMediaIDSet(
-        int index, long value) {
+        int index, int value) {
       ensureMediaIDSetIsMutable();
-      mediaIDSet_.setLong(index, value);
+      mediaIDSet_.setInt(index, value);
       onChanged();
       return this;
     }
     /**
-     * <code>repeated uint64 MediaIDSet = 4;</code>
+     * <code>repeated uint32 MediaIDSet = 4;</code>
      * @param value The mediaIDSet to add.
      * @return This builder for chaining.
      */
-    public Builder addMediaIDSet(long value) {
+    public Builder addMediaIDSet(int value) {
       ensureMediaIDSetIsMutable();
-      mediaIDSet_.addLong(value);
+      mediaIDSet_.addInt(value);
       onChanged();
       return this;
     }
     /**
-     * <code>repeated uint64 MediaIDSet = 4;</code>
+     * <code>repeated uint32 MediaIDSet = 4;</code>
      * @param values The mediaIDSet to add.
      * @return This builder for chaining.
      */
     public Builder addAllMediaIDSet(
-        java.lang.Iterable<? extends java.lang.Long> values) {
+        java.lang.Iterable<? extends java.lang.Integer> values) {
       ensureMediaIDSetIsMutable();
       com.google.protobuf.AbstractMessageLite.Builder.addAll(
           values, mediaIDSet_);
@@ -876,11 +876,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated uint64 MediaIDSet = 4;</code>
+     * <code>repeated uint32 MediaIDSet = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearMediaIDSet() {
-      mediaIDSet_ = emptyLongList();
+      mediaIDSet_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000008);
       onChanged();
       return this;

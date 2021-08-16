@@ -2,6 +2,7 @@ package com.mediaassetsdk;
 
 import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.methods.StringRequestEntity;
+import org.apache.commons.httpclient.methods.ByteArrayRequestEntity;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.PutMethod;
@@ -23,7 +24,7 @@ public class HttpClientUtil {
 	 * @throws IOException
 	 * @throws HttpException
 	 */
-	public static byte[] doGet(HashMap<String, String> header, String url) throws HttpException, IOException {
+	public static GetMethod doGet(HashMap<String, String> header, String url) throws HttpException, IOException {
 		// 1.生成HttpClient对象并设置参数
 		HttpClient httpClient = new HttpClient();
 		// 设置 HTTP 连接超时为30分钟
@@ -47,7 +48,7 @@ public class HttpClientUtil {
 		if (statusCode != HttpStatus.SC_OK) {
 			throw new IOException("请求出错：" + getMethod.getStatusLine());
 		}
-		return getMethod.getResponseBody();
+		return getMethod;
 	}
 
 	/**
@@ -93,7 +94,7 @@ public class HttpClientUtil {
 		// 1.生成HttpClient对象并设置参数
 		HttpClient httpClient = new HttpClient();
 		// 设置 HTTP 连接超时为30分钟
-		httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(1800* 1000);
+		httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(1800 * 1000);
 		// 2.生成GetMethod对象并设置参数
 		PutMethod putMethod = new PutMethod(url);
 		// 设置get请求超时为5秒
@@ -101,14 +102,14 @@ public class HttpClientUtil {
 		// 设置请求重试处理，用的是默认的重试处理：请求三次
 		putMethod.getParams().setParameter(HttpMethodParams.RETRY_HANDLER, new DefaultHttpMethodRetryHandler());
 		
-		putMethod.setRequestEntity(new StringRequestEntity(buffer.toString(), null, null));
+		putMethod.setRequestEntity(new ByteArrayRequestEntity(buffer));
 		// 设置 header
 		Iterator<HashMap.Entry<String, String>> iterable = header.entrySet().iterator();
 		while (iterable.hasNext()) {
 			HashMap.Entry<String, String> entry = iterable.next();
 			putMethod.addRequestHeader(entry.getKey(), entry.getValue());
 		}
-		// 3.执行HTTP GET 请求
+		// 3.执行HTTP PUT 请求
 		int statusCode = httpClient.executeMethod(putMethod);
 		// 4.判断访问的状态码
 		if (statusCode != HttpStatus.SC_OK) {

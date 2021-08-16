@@ -39,7 +39,7 @@ message Label {
 }
 
 message MediaInfo {
-  optional uint64 MediaID = 1;
+  optional uint32 MediaID = 1;
   optional string Name = 2;
   optional uint32 Duration = 3;
   optional uint32 Size = 4;
@@ -58,7 +58,7 @@ message MediaInfo {
 }
 
 message FailedMediaInfo {
-  optional uint64 MediaID = 1;
+  optional uint32 MediaID = 1;
   optional string FailedReason = 2;
 }
 
@@ -86,7 +86,7 @@ message CommitUploadRequest {
   optional string Action = 1;
   optional int32 TIBusinessID = 2;
   optional int32 TIProjectID = 3;
-  optional uint64 MediaID = 4;
+  optional uint32 MediaID = 4;
   optional string Key = 5;
   optional string Bucket = 6;
   optional string UploadId = 7;  
@@ -102,7 +102,7 @@ message DescribeMediaDetailsRequest {
   optional string Action = 1;
   optional int32 TIBusinessID = 2;
   optional int32 TIProjectID = 3;
-  repeated uint64 MediaIDSet = 4;
+  repeated uint32 MediaIDSet = 4;
 }
 
 message DescribeMediasRequest {
@@ -119,7 +119,7 @@ message ModifyExpireTimeRequest {
   optional string Action = 1;
   optional int32 TIBusinessID = 2;
   optional int32 TIProjectID = 3;
-  optional uint64 MediaID = 4;
+  optional uint32 MediaID = 4;
   optional int32 Days = 5;
 }
 
@@ -127,7 +127,7 @@ message ModifyMediaRequest {
   optional string Action = 1;
   optional int32 TIBusinessID = 2;
   optional int32 TIProjectID = 3;
-  optional uint64 MediaID = 4;
+  optional uint32 MediaID = 4;
   optional string MediaTag = 5;
   optional string MediaSecondTag = 6;
 }
@@ -136,14 +136,14 @@ message RemoveMediasRequest {
   optional string Action = 1;
   optional int32 TIBusinessID = 2;
   optional int32 TIProjectID = 3;
-  repeated uint64 MediaIDSet = 4;
+  repeated uint32 MediaIDSet = 4;
 }
 
 
 message ApplyUploadResponse {
   optional string RequestID = 1;
   optional Error Error = 2;
-  optional uint64 MediaID = 3;
+  optional uint32 MediaID = 3;
   optional string Key = 4;
   optional string Bucket = 5;
   optional string UploadId = 6;  
