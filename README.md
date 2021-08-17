@@ -30,7 +30,7 @@ DescribeCategoriesResponse categoriesRsp = client.describeCategories(
 
 ## 上传媒体
 ```java
-String file = ""data/test.mp4"; // 文件路径
+String file = "data/test.mp4"; // 文件路径
 String name = "test视频"; // 媒体名称
 String type = "视频"; // 媒体类型, 可选 视频，音频，图片
 String tag = "新闻"; // 媒体标签, 可选 新闻, 综艺, 电影, 电视剧, 体育, 专题, 互联网咨询
