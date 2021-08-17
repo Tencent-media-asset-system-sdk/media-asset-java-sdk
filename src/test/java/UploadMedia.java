@@ -116,7 +116,7 @@ public class UploadMedia {
 		MediaAssetClient client = new MediaAssetClient(host, "", secretID, secretKey, businessID, projectID);
 		try {
 			int mediaID = client.uploadFile(file, name, type, tag, secondTag, lang, threads);
-			System.out.printf("Upload %s success, mediaID: %d", file, mediaID);
+			System.out.printf("Upload %s success, mediaID: %d\n", file, mediaID);
 			
 			com.mediaassetsdk.DescribeMediaDetailsResponse rsp = client
 					.describeMediaDetails(com.mediaassetsdk.DescribeMediaDetailsRequest.newBuilder().addMediaIDSet(mediaID)
