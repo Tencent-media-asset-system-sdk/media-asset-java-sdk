@@ -38,10 +38,10 @@ String secondTag = ""; // 二级标签，如果一级标签为综艺可选 "晚�
 String lang = "普通话"; // 可选 普通话, 粤语
 int threads = 4; // 并发上传的线程数
 
-// 直接上传文件
+// 上传文件到媒体管理系统
 int mediaID = client.uploadFile(file, name, type, tag, secondTag, lang, threads);
 
-// 上传内存
+// 上传内存到媒体管理系统
 File f = new File(file);
 InputStream in = new FileInputStream(f);
 byte[] filebuf = in.readAllBytes();
@@ -59,12 +59,12 @@ DescribeMediaDetailsResponse detailsRsp = client.describeMediaDetails(
 
 ## 下载媒体
 ```java
-// 下载到文件
+// 下载媒体到文件
 String dir = "./data"; // 下载到的目录
 String fileName = "download.mp4"; // 下载的文件名
 client.downLoadToFile(detailsRsp.getMediaInfoSet(0).getDownLoadURL(), dir, fileName);
 
-// 下载文件到内存
+// 下载媒体到内存
 byte[] filebuf = client.downLoadToBuf(detailsRsp.getMediaInfoSet(0).getDownLoadURL());
 ```
 
