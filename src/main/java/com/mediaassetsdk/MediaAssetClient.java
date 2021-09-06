@@ -62,6 +62,32 @@ public class MediaAssetClient {
 		}
 	}
 
+	private com.mediaassetsdk.UploadPartResponse putObject(String key, String bucket, byte[] filebuf)
+			throws HttpException, IOException, RuntimeException {
+		String action = "PutObject";
+		String service = "app-cdn4aowk";
+		String version = "2021-02-26";
+		String contentType = "application/octet-stream";
+		String httpMethod = "PUT";
+		String secretId = this.secretID;
+		String secretKey = this.secretKey;
+		TiSign ts = new TiSign(host, action, version, service, contentType, httpMethod, secretId, secretKey);
+		HashMap<String, String> httpHeaderMap = new HashMap<String, String>();
+		try {
+			ts.CreateHeaderWithSignature(httpHeaderMap);
+		} catch (Exception e) {
+			throw new IOException("生成签名错误: " + e.toString());
+		}
+		String md5sum = calcMD5(filebuf);
+		String canonicalQueryString = "useJson=true&Bucket=" + bucket + "&Key=" + key + "&Content-MD5=" + md5sum;
+		String url = this.endPoint + "/FileManager/PutObject?" + canonicalQueryString;
+		String response = com.mediaassetsdk.HttpClientUtil.doPut(httpHeaderMap, url, filebuf);
+		JsonObject json = (JsonObject) new JsonParser().parse(response);
+		com.mediaassetsdk.UploadPartResponse.Builder rsp = com.mediaassetsdk.UploadPartResponse.newBuilder();
+		JsonFormat.parser().ignoringUnknownFields().merge(json.get("Response").toString(), rsp);
+		return rsp.build();
+	}
+
 	public MediaAssetClient(String host, String port, String secretID, String secretKey, int tiBusinessID,
 			int tiProjectID) {
 		super();
@@ -477,6 +503,7 @@ public class MediaAssetClient {
 		return rsp.build();
 	}
 
+	@SuppressWarnings("resource")
 	public int uploadFile(String filename, String name, String type, String tag, String secondTag, String lang,
 			int threads) throws IOException, HttpException, com.mediaassetsdk.MediaAssetException, InterruptedException {
 		File file = new File(filename);
@@ -498,58 +525,97 @@ public class MediaAssetClient {
 		final Semaphore semp = new Semaphore(threads); // 最大并发上传，防止内存溢出
 		final String[] exception = new String[1];
 		FileInputStream in = new FileInputStream(file);
-		int partNumber = 1;
-		while (exception[0] == null) {
-			byte[] filecontent = in.readNBytes(UPLOAD_BLOCK_SIZE);
-			if (filecontent.length == 0) {
-				in.close();
-				break;
-			}
-			semp.acquire();
-			final com.mediaassetsdk.UploadPartRequest.Builder uploadReq = com.mediaassetsdk.UploadPartRequest.newBuilder();
-			uploadReq.setBucket(applyUploadRsp.getBucket());
-			uploadReq.setKey(applyUploadRsp.getKey());
-			uploadReq.setUploadID(applyUploadRsp.getUploadId());
-			uploadReq.setPartNUmber(partNumber);
-			partNumber++;
-			uploadReq.setBuffer(com.google.protobuf.ByteString.copyFrom(filecontent));
-			Runnable run = new Runnable() {
-				public void run() {
-					int maxTry = 3;
-					while (maxTry-- > 0) {
-						try {
-							com.mediaassetsdk.UploadPartResponse partRsp = uploadPart(uploadReq.build());
-							if (partRsp.hasError()) {
-								System.out.printf("Upload part %d failed\n", uploadReq.getPartNUmber());
-								if (maxTry == 0) {
-									removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build()); // 删除上传的视频
-									// 上传错误抛出异常
-									exception[0] = "UploadPart error " + JsonFormat.printer().print(partRsp);
-								}
-							} else {
-								break;
-							}
-						} catch (Exception e) {
-							if (maxTry == 0) {
-								try {
-									removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build());
-								} catch (HttpException e1) {
-								} catch (IOException e1) {
-								}
-								exception[0] = "UploadPart error " + e.toString();
-							}
-						}
+		if (filelength <= UPLOAD_BLOCK_SIZE) {
+			// 不需要分片
+			byte[] filecontent = in.readNBytes(filelength.intValue());
+			int sleepTime = 50;
+			int tryTime = 5;
+			String err = "";
+			while (tryTime-- > 0) {
+				err = "";
+				try {
+					com.mediaassetsdk.UploadPartResponse rsp = this.putObject(applyUploadRsp.getKey(), applyUploadRsp.getBucket(),
+							filecontent);
+					if (rsp.hasError()) {
+						err = "PutObject error " + JsonFormat.printer().print(rsp);
+					} else {
+						break;
 					}
-					semp.release();
+				} catch (Exception e) {
+					err = "PutObject error " + e.toString();
+				}
+				Thread.sleep(sleepTime);
+				sleepTime *= 2;
+			}
+			if (err != "") {
+				try {
+					removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build());
+				} catch (HttpException e1) {
+				} catch (IOException e1) {
+				}
+				throw new com.mediaassetsdk.MediaAssetException(err);
+			}
+		} else {
+			int partNumber = 1;
+			while (exception[0] == null) {
+				byte[] filecontent = in.readNBytes(UPLOAD_BLOCK_SIZE);
+				if (filecontent.length == 0) {
+					in.close();
+					break;
+				}
+				semp.acquire();
+				final com.mediaassetsdk.UploadPartRequest.Builder uploadReq = com.mediaassetsdk.UploadPartRequest.newBuilder();
+				uploadReq.setBucket(applyUploadRsp.getBucket());
+				uploadReq.setKey(applyUploadRsp.getKey());
+				uploadReq.setUploadID(applyUploadRsp.getUploadId());
+				uploadReq.setPartNUmber(partNumber);
+				partNumber++;
+				uploadReq.setBuffer(com.google.protobuf.ByteString.copyFrom(filecontent));
+				Runnable run = new Runnable() {
+					public void run() {
+						int maxTry = 5;
+						int sleepTime = 50;
+						while (maxTry-- > 0) {
+							try {
+								com.mediaassetsdk.UploadPartResponse partRsp = uploadPart(uploadReq.build());
+								if (partRsp.hasError()) {
+									if (maxTry == 0) {
+										removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build()); // 删除上传的视频
+										// 上传错误抛出异常
+										exception[0] = "UploadPart error " + JsonFormat.printer().print(partRsp);
+									}
+								} else {
+									break;
+								}
+							} catch (Exception e) {
+								if (maxTry == 0) {
+									try {
+										removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build());
+									} catch (HttpException e1) {
+									} catch (IOException e1) {
+									}
+									exception[0] = "UploadPart error " + e.toString();
+								}
+							}
+							try {
+								Thread.sleep(sleepTime);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							sleepTime *= 2;
+						}
+						semp.release();
+					};
 				};
-			};
-			exec.execute(run);
-		}
-		for (int i = 0; i < threads; i++) {
-			semp.acquire();
-		}
-		if (exception[0] != null) {
-			throw new com.mediaassetsdk.MediaAssetException(exception[0]);
+				exec.execute(run);
+			}
+			for (int i = 0; i < threads; i++) {
+				semp.acquire();
+			}
+			if (exception[0] != null) {
+				throw new com.mediaassetsdk.MediaAssetException(exception[0]);
+			}
 		}
 
 		com.mediaassetsdk.CommitUploadRequest.Builder commitReq = com.mediaassetsdk.CommitUploadRequest.newBuilder();
@@ -591,56 +657,94 @@ public class MediaAssetClient {
 		final Semaphore semp = new Semaphore(threads); // 最大并发上传，防止内存溢出
 		final String[] exception = new String[1];
 		int partNumber = 1;
-		for (int i = 0; i < filebuf.length; i += UPLOAD_BLOCK_SIZE) {
-			if (exception[0] != null) {
-				break;
+		if (filebuf.length <= UPLOAD_BLOCK_SIZE) {
+			// 不需要分片
+			int sleepTime = 50;
+			int tryTime = 5;
+			String err = "";
+			while (tryTime-- > 0) {
+				err = "";
+				try {
+					com.mediaassetsdk.UploadPartResponse rsp = this.putObject(applyUploadRsp.getKey(), applyUploadRsp.getBucket(),
+							filebuf);
+					if (rsp.hasError()) {
+						err = "PutObject error " + JsonFormat.printer().print(rsp);
+					} else {
+						break;
+					}
+				} catch (Exception e) {
+					err = "PutObject error " + e.toString();
+				}
+				Thread.sleep(sleepTime);
+				sleepTime *= 2;
 			}
-			int end = Math.min(i + UPLOAD_BLOCK_SIZE, filebuf.length);
-			semp.acquire();
-			final com.mediaassetsdk.UploadPartRequest.Builder uploadReq = com.mediaassetsdk.UploadPartRequest.newBuilder();
-			uploadReq.setBucket(applyUploadRsp.getBucket());
-			uploadReq.setKey(applyUploadRsp.getKey());
-			uploadReq.setUploadID(applyUploadRsp.getUploadId());
-			uploadReq.setPartNUmber(partNumber);
-			partNumber++;
-			uploadReq.setBuffer(com.google.protobuf.ByteString.copyFrom(filebuf, i, end - i));
-			Runnable run = new Runnable() {
-				public void run() {
-					int maxTry = 3;
-					while (maxTry-- > 0) {
-						try {
-							com.mediaassetsdk.UploadPartResponse partRsp = uploadPart(uploadReq.build());
-							if (partRsp.hasError()) {
-								System.out.printf("Upload part %d failed\n", uploadReq.getPartNUmber());
+			if (err != "") {
+				try {
+					removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build());
+				} catch (HttpException e1) {
+				} catch (IOException e1) {
+				}
+				throw new com.mediaassetsdk.MediaAssetException(err);
+			}
+		} else {
+			for (int i = 0; i < filebuf.length; i += UPLOAD_BLOCK_SIZE) {
+				if (exception[0] != null) {
+					break;
+				}
+				int end = Math.min(i + UPLOAD_BLOCK_SIZE, filebuf.length);
+				semp.acquire();
+				final com.mediaassetsdk.UploadPartRequest.Builder uploadReq = com.mediaassetsdk.UploadPartRequest.newBuilder();
+				uploadReq.setBucket(applyUploadRsp.getBucket());
+				uploadReq.setKey(applyUploadRsp.getKey());
+				uploadReq.setUploadID(applyUploadRsp.getUploadId());
+				uploadReq.setPartNUmber(partNumber);
+				partNumber++;
+				uploadReq.setBuffer(com.google.protobuf.ByteString.copyFrom(filebuf, i, end - i));
+				Runnable run = new Runnable() {
+					public void run() {
+						int maxTry = 5;
+						int sleepTime = 50;
+						while (maxTry-- > 0) {
+							try {
+								com.mediaassetsdk.UploadPartResponse partRsp = uploadPart(uploadReq.build());
+								if (partRsp.hasError()) {
+									if (maxTry == 0) {
+										removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build()); // 删除上传的视频
+										// 上传错误抛出异常
+										exception[0] = "UploadPart error " + JsonFormat.printer().print(partRsp);
+									}
+								} else {
+									break;
+								}
+							} catch (Exception e) {
 								if (maxTry == 0) {
-									removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build()); // 删除上传的视频
-									// 上传错误抛出异常
-									exception[0] = "UploadPart error " + JsonFormat.printer().print(partRsp);
+									try {
+										removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build());
+									} catch (HttpException e1) {
+									} catch (IOException e1) {
+									}
+									exception[0] = "UploadPart error " + e.toString();
 								}
-							} else {
-								break;
-							}
-						} catch (Exception e) {
-							if (maxTry == 0) {
-								try {
-									removeMedias(removeReq.addMediaIDSet(applyUploadRsp.getMediaID()).build());
-								} catch (HttpException e1) {
-								} catch (IOException e1) {
-								}
-								exception[0] = "UploadPart error " + e.toString();
 							}
 						}
-					}
-					semp.release();
+						semp.release();
+						try {
+							Thread.sleep(sleepTime);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						sleepTime *= 2;
+					};
 				};
-			};
-			exec.execute(run);
-		}
-		for (int i = 0; i < threads; i++) {
-			semp.acquire();
-		}
-		if (exception[0] != null) {
-			throw new com.mediaassetsdk.MediaAssetException(exception[0]);
+				exec.execute(run);
+			}
+			for (int i = 0; i < threads; i++) {
+				semp.acquire();
+			}
+			if (exception[0] != null) {
+				throw new com.mediaassetsdk.MediaAssetException(exception[0]);
+			}
 		}
 
 		com.mediaassetsdk.CommitUploadRequest.Builder commitReq = com.mediaassetsdk.CommitUploadRequest.newBuilder();
@@ -704,7 +808,7 @@ public class MediaAssetClient {
 		} catch (Exception e) {
 			throw new IOException("生成签名错误: " + e.toString());
 		}
-		CloseableHttpClient httpclient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()) .build();
+		CloseableHttpClient httpclient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
 		try {
 			HttpGet httpget = new HttpGet(this.endPoint + url);
 			// 设置 header
@@ -736,7 +840,7 @@ public class MediaAssetClient {
 		}
 		return md5code;
 	}
-	
+
 	public static class FileDownloadResponseHandler implements ResponseHandler<File> {
 
 		private final File target;
@@ -751,6 +855,6 @@ public class MediaAssetClient {
 			FileUtils.copyInputStreamToFile(source, this.target);
 			return this.target;
 		}
-		
+
 	}
 }
