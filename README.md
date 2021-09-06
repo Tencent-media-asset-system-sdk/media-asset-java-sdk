@@ -33,15 +33,15 @@ DescribeCategoriesResponse categoriesRsp = client.describeCategories(
 String file = "data/test.mp4"; // 文件路径
 String name = "test视频"; // 媒体名称
 String type = "视频"; // 媒体类型, 可选 视频，音频，图片
-String tag = "新闻"; // 媒体标签, 可选 新闻, 综艺, 电影, 电视剧, 体育, 专题, 互联网咨询
+String tag = "新闻"; // 媒体标签, 可选 新闻, 综艺, 电影, 电视剧, 体育, 专题, 互联网资讯
 String secondTag = ""; // 二级标签，如果一级标签为综艺可选 "晚会" 和 "其他"，其他为空
 String lang = "普通话"; // 可选 普通话, 粤语
 int threads = 4; // 并发上传的线程数
 
-// 直接上传文件
+// 上传文件到媒体管理系统
 int mediaID = client.uploadFile(file, name, type, tag, secondTag, lang, threads);
 
-// 上传内存
+// 上传内存到媒体管理系统
 File f = new File(file);
 InputStream in = new FileInputStream(f);
 byte[] filebuf = in.readAllBytes();
@@ -59,12 +59,12 @@ DescribeMediaDetailsResponse detailsRsp = client.describeMediaDetails(
 
 ## 下载媒体
 ```java
-// 下载到文件
+// 下载媒体到文件
 String dir = "./data"; // 下载到的目录
 String fileName = "download.mp4"; // 下载的文件名
 client.downLoadToFile(detailsRsp.getMediaInfoSet(0).getDownLoadURL(), dir, fileName);
 
-// 下载文件到内存
+// 下载媒体到内存
 byte[] filebuf = client.downLoadToBuf(detailsRsp.getMediaInfoSet(0).getDownLoadURL());
 ```
 
