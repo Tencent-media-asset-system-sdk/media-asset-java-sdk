@@ -13,7 +13,7 @@ import com.mediaassetsdk.*;
 String host = "106.52.71.124"; // 调用服务的的 host
 String port = ""; // 调用服务的的 port, 80 填空
 String secretID = "secretID"; // secretID
-String secretID = "secretKey"; // secretKey
+String secretKey = "secretKey"; // secretKey
 int businessID = 1; // 业务ID
 int projectID = 1; // 项目ID
 MediaAssetClient client = new MediaAssetClient(host, port, secretID, secretKey, businessID, projectID);
