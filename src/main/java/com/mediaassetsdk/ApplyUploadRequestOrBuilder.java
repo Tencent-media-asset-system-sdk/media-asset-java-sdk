@@ -122,4 +122,15 @@ public interface ApplyUploadRequestOrBuilder extends
    * @return The inner.
    */
   boolean getInner();
+
+  /**
+   * <code>optional int32 UsePutObject = 9;</code>
+   * @return Whether the usePutObject field is set.
+   */
+  boolean hasUsePutObject();
+  /**
+   * <code>optional int32 UsePutObject = 9;</code>
+   * @return The usePutObject.
+   */
+  int getUsePutObject();
 }

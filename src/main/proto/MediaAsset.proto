@@ -13,6 +13,19 @@ message Error {
   optional string Message = 2;
 }
 
+message UploadMediaInfo {
+  optional uint32 MediaID = 1;
+  optional string FailedReason = 2;
+}
+
+message UploadMedia {
+  optional string Name = 1;
+  optional string LocalPath = 2;
+  optional string MediaURL = 3;
+  optional MediaMeta MediaMeta =4;
+  optional string ContentMD5 = 5;
+}
+
 message MediaMeta {
   optional string MediaType = 1;
   optional string MediaTag = 2;
@@ -71,6 +84,7 @@ message ApplyUploadRequest {
   optional string Size = 6;
   optional string ContentMD5 = 7;
   optional bool Inner = 8;
+  optional int32 UsePutObject = 9;
 }
 
 message UploadPartRequest {
@@ -139,6 +153,14 @@ message RemoveMediasRequest {
   repeated uint32 MediaIDSet = 4;
 }
 
+message CreateMediasRequest {
+  optional string Action = 1;
+  optional int32 TIBusinessID = 2;
+  optional int32 TIProjectID = 3;
+  repeated UploadMedia UploadMediaSet = 4;
+  optional bool Inner = 5;
+}
+
 
 message ApplyUploadResponse {
   optional string RequestID = 1;
@@ -196,3 +218,11 @@ message RemoveMediasResponse {
   optional Error Error = 2;
   repeated FailedMediaInfo FailedMediaSet = 3;
 }
+
+
+message CreateMediasResponse {
+  optional string RequestID = 1;
+  optional Error Error = 2;
+  repeated UploadMediaInfo UploadMediaInfoSet = 3;
+}
+
