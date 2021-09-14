@@ -4,21 +4,21 @@
 package com.mediaassetsdk;
 
 /**
- * Protobuf type {@code ApplyUploadRequest}
+ * Protobuf type {@code UploadMedia}
  */
-public final class ApplyUploadRequest extends
+public final class UploadMedia extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ApplyUploadRequest)
-    ApplyUploadRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:UploadMedia)
+    UploadMediaOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ApplyUploadRequest.newBuilder() to construct.
-  private ApplyUploadRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UploadMedia.newBuilder() to construct.
+  private UploadMedia(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ApplyUploadRequest() {
-    action_ = "";
+  private UploadMedia() {
     name_ = "";
-    size_ = "";
+    localPath_ = "";
+    mediaURL_ = "";
     contentMD5_ = "";
   }
 
@@ -26,7 +26,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new ApplyUploadRequest();
+    return new UploadMedia();
   }
 
   @java.lang.Override
@@ -34,7 +34,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ApplyUploadRequest(
+  private UploadMedia(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -56,28 +56,24 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
             bitField0_ |= 0x00000001;
-            action_ = s;
-            break;
-          }
-          case 16: {
-            bitField0_ |= 0x00000002;
-            tIBusinessID_ = input.readInt32();
-            break;
-          }
-          case 24: {
-            bitField0_ |= 0x00000004;
-            tIProjectID_ = input.readInt32();
-            break;
-          }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
-            bitField0_ |= 0x00000008;
             name_ = s;
             break;
           }
-          case 42: {
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000002;
+            localPath_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+            bitField0_ |= 0x00000004;
+            mediaURL_ = s;
+            break;
+          }
+          case 34: {
             com.mediaassetsdk.MediaMeta.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000010) != 0)) {
+            if (((bitField0_ & 0x00000008) != 0)) {
               subBuilder = mediaMeta_.toBuilder();
             }
             mediaMeta_ = input.readMessage(com.mediaassetsdk.MediaMeta.parser(), extensionRegistry);
@@ -85,29 +81,13 @@ private static final long serialVersionUID = 0L;
               subBuilder.mergeFrom(mediaMeta_);
               mediaMeta_ = subBuilder.buildPartial();
             }
+            bitField0_ |= 0x00000008;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
             bitField0_ |= 0x00000010;
-            break;
-          }
-          case 50: {
-            java.lang.String s = input.readStringRequireUtf8();
-            bitField0_ |= 0x00000020;
-            size_ = s;
-            break;
-          }
-          case 58: {
-            java.lang.String s = input.readStringRequireUtf8();
-            bitField0_ |= 0x00000040;
             contentMD5_ = s;
-            break;
-          }
-          case 64: {
-            bitField0_ |= 0x00000080;
-            inner_ = input.readBool();
-            break;
-          }
-          case 72: {
-            bitField0_ |= 0x00000100;
-            usePutObject_ = input.readInt32();
             break;
           }
           default: {
@@ -131,114 +111,30 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.mediaassetsdk.MediaAsset.internal_static_ApplyUploadRequest_descriptor;
+    return com.mediaassetsdk.MediaAsset.internal_static_UploadMedia_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.mediaassetsdk.MediaAsset.internal_static_ApplyUploadRequest_fieldAccessorTable
+    return com.mediaassetsdk.MediaAsset.internal_static_UploadMedia_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.mediaassetsdk.ApplyUploadRequest.class, com.mediaassetsdk.ApplyUploadRequest.Builder.class);
+            com.mediaassetsdk.UploadMedia.class, com.mediaassetsdk.UploadMedia.Builder.class);
   }
 
   private int bitField0_;
-  public static final int ACTION_FIELD_NUMBER = 1;
-  private volatile java.lang.Object action_;
-  /**
-   * <code>optional string Action = 1;</code>
-   * @return Whether the action field is set.
-   */
-  @java.lang.Override
-  public boolean hasAction() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional string Action = 1;</code>
-   * @return The action.
-   */
-  @java.lang.Override
-  public java.lang.String getAction() {
-    java.lang.Object ref = action_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      action_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>optional string Action = 1;</code>
-   * @return The bytes for action.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getActionBytes() {
-    java.lang.Object ref = action_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      action_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int TIBUSINESSID_FIELD_NUMBER = 2;
-  private int tIBusinessID_;
-  /**
-   * <code>optional int32 TIBusinessID = 2;</code>
-   * @return Whether the tIBusinessID field is set.
-   */
-  @java.lang.Override
-  public boolean hasTIBusinessID() {
-    return ((bitField0_ & 0x00000002) != 0);
-  }
-  /**
-   * <code>optional int32 TIBusinessID = 2;</code>
-   * @return The tIBusinessID.
-   */
-  @java.lang.Override
-  public int getTIBusinessID() {
-    return tIBusinessID_;
-  }
-
-  public static final int TIPROJECTID_FIELD_NUMBER = 3;
-  private int tIProjectID_;
-  /**
-   * <code>optional int32 TIProjectID = 3;</code>
-   * @return Whether the tIProjectID field is set.
-   */
-  @java.lang.Override
-  public boolean hasTIProjectID() {
-    return ((bitField0_ & 0x00000004) != 0);
-  }
-  /**
-   * <code>optional int32 TIProjectID = 3;</code>
-   * @return The tIProjectID.
-   */
-  @java.lang.Override
-  public int getTIProjectID() {
-    return tIProjectID_;
-  }
-
-  public static final int NAME_FIELD_NUMBER = 4;
+  public static final int NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object name_;
   /**
-   * <code>optional string Name = 4;</code>
+   * <code>optional string Name = 1;</code>
    * @return Whether the name field is set.
    */
   @java.lang.Override
   public boolean hasName() {
-    return ((bitField0_ & 0x00000008) != 0);
+    return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>optional string Name = 4;</code>
+   * <code>optional string Name = 1;</code>
    * @return The name.
    */
   @java.lang.Override
@@ -255,7 +151,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>optional string Name = 4;</code>
+   * <code>optional string Name = 1;</code>
    * @return The bytes for name.
    */
   @java.lang.Override
@@ -273,18 +169,110 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int MEDIAMETA_FIELD_NUMBER = 5;
+  public static final int LOCALPATH_FIELD_NUMBER = 2;
+  private volatile java.lang.Object localPath_;
+  /**
+   * <code>optional string LocalPath = 2;</code>
+   * @return Whether the localPath field is set.
+   */
+  @java.lang.Override
+  public boolean hasLocalPath() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>optional string LocalPath = 2;</code>
+   * @return The localPath.
+   */
+  @java.lang.Override
+  public java.lang.String getLocalPath() {
+    java.lang.Object ref = localPath_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      localPath_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string LocalPath = 2;</code>
+   * @return The bytes for localPath.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getLocalPathBytes() {
+    java.lang.Object ref = localPath_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      localPath_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MEDIAURL_FIELD_NUMBER = 3;
+  private volatile java.lang.Object mediaURL_;
+  /**
+   * <code>optional string MediaURL = 3;</code>
+   * @return Whether the mediaURL field is set.
+   */
+  @java.lang.Override
+  public boolean hasMediaURL() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>optional string MediaURL = 3;</code>
+   * @return The mediaURL.
+   */
+  @java.lang.Override
+  public java.lang.String getMediaURL() {
+    java.lang.Object ref = mediaURL_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      mediaURL_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>optional string MediaURL = 3;</code>
+   * @return The bytes for mediaURL.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getMediaURLBytes() {
+    java.lang.Object ref = mediaURL_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      mediaURL_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MEDIAMETA_FIELD_NUMBER = 4;
   private com.mediaassetsdk.MediaMeta mediaMeta_;
   /**
-   * <code>optional .MediaMeta MediaMeta = 5;</code>
+   * <code>optional .MediaMeta MediaMeta = 4;</code>
    * @return Whether the mediaMeta field is set.
    */
   @java.lang.Override
   public boolean hasMediaMeta() {
-    return ((bitField0_ & 0x00000010) != 0);
+    return ((bitField0_ & 0x00000008) != 0);
   }
   /**
-   * <code>optional .MediaMeta MediaMeta = 5;</code>
+   * <code>optional .MediaMeta MediaMeta = 4;</code>
    * @return The mediaMeta.
    */
   @java.lang.Override
@@ -292,71 +280,25 @@ private static final long serialVersionUID = 0L;
     return mediaMeta_ == null ? com.mediaassetsdk.MediaMeta.getDefaultInstance() : mediaMeta_;
   }
   /**
-   * <code>optional .MediaMeta MediaMeta = 5;</code>
+   * <code>optional .MediaMeta MediaMeta = 4;</code>
    */
   @java.lang.Override
   public com.mediaassetsdk.MediaMetaOrBuilder getMediaMetaOrBuilder() {
     return mediaMeta_ == null ? com.mediaassetsdk.MediaMeta.getDefaultInstance() : mediaMeta_;
   }
 
-  public static final int SIZE_FIELD_NUMBER = 6;
-  private volatile java.lang.Object size_;
-  /**
-   * <code>optional string Size = 6;</code>
-   * @return Whether the size field is set.
-   */
-  @java.lang.Override
-  public boolean hasSize() {
-    return ((bitField0_ & 0x00000020) != 0);
-  }
-  /**
-   * <code>optional string Size = 6;</code>
-   * @return The size.
-   */
-  @java.lang.Override
-  public java.lang.String getSize() {
-    java.lang.Object ref = size_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      size_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>optional string Size = 6;</code>
-   * @return The bytes for size.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getSizeBytes() {
-    java.lang.Object ref = size_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      size_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CONTENTMD5_FIELD_NUMBER = 7;
+  public static final int CONTENTMD5_FIELD_NUMBER = 5;
   private volatile java.lang.Object contentMD5_;
   /**
-   * <code>optional string ContentMD5 = 7;</code>
+   * <code>optional string ContentMD5 = 5;</code>
    * @return Whether the contentMD5 field is set.
    */
   @java.lang.Override
   public boolean hasContentMD5() {
-    return ((bitField0_ & 0x00000040) != 0);
+    return ((bitField0_ & 0x00000010) != 0);
   }
   /**
-   * <code>optional string ContentMD5 = 7;</code>
+   * <code>optional string ContentMD5 = 5;</code>
    * @return The contentMD5.
    */
   @java.lang.Override
@@ -373,7 +315,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>optional string ContentMD5 = 7;</code>
+   * <code>optional string ContentMD5 = 5;</code>
    * @return The bytes for contentMD5.
    */
   @java.lang.Override
@@ -391,44 +333,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int INNER_FIELD_NUMBER = 8;
-  private boolean inner_;
-  /**
-   * <code>optional bool Inner = 8;</code>
-   * @return Whether the inner field is set.
-   */
-  @java.lang.Override
-  public boolean hasInner() {
-    return ((bitField0_ & 0x00000080) != 0);
-  }
-  /**
-   * <code>optional bool Inner = 8;</code>
-   * @return The inner.
-   */
-  @java.lang.Override
-  public boolean getInner() {
-    return inner_;
-  }
-
-  public static final int USEPUTOBJECT_FIELD_NUMBER = 9;
-  private int usePutObject_;
-  /**
-   * <code>optional int32 UsePutObject = 9;</code>
-   * @return Whether the usePutObject field is set.
-   */
-  @java.lang.Override
-  public boolean hasUsePutObject() {
-    return ((bitField0_ & 0x00000100) != 0);
-  }
-  /**
-   * <code>optional int32 UsePutObject = 9;</code>
-   * @return The usePutObject.
-   */
-  @java.lang.Override
-  public int getUsePutObject() {
-    return usePutObject_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -444,31 +348,19 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, action_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeInt32(2, tIBusinessID_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, localPath_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeInt32(3, tIProjectID_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, mediaURL_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, name_);
+      output.writeMessage(4, getMediaMeta());
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      output.writeMessage(5, getMediaMeta());
-    }
-    if (((bitField0_ & 0x00000020) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, size_);
-    }
-    if (((bitField0_ & 0x00000040) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, contentMD5_);
-    }
-    if (((bitField0_ & 0x00000080) != 0)) {
-      output.writeBool(8, inner_);
-    }
-    if (((bitField0_ & 0x00000100) != 0)) {
-      output.writeInt32(9, usePutObject_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, contentMD5_);
     }
     unknownFields.writeTo(output);
   }
@@ -480,36 +372,20 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, action_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, tIBusinessID_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, localPath_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, tIProjectID_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, mediaURL_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, name_);
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getMediaMeta());
     }
     if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getMediaMeta());
-    }
-    if (((bitField0_ & 0x00000020) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, size_);
-    }
-    if (((bitField0_ & 0x00000040) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, contentMD5_);
-    }
-    if (((bitField0_ & 0x00000080) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(8, inner_);
-    }
-    if (((bitField0_ & 0x00000100) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(9, usePutObject_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, contentMD5_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -521,55 +397,35 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.mediaassetsdk.ApplyUploadRequest)) {
+    if (!(obj instanceof com.mediaassetsdk.UploadMedia)) {
       return super.equals(obj);
     }
-    com.mediaassetsdk.ApplyUploadRequest other = (com.mediaassetsdk.ApplyUploadRequest) obj;
+    com.mediaassetsdk.UploadMedia other = (com.mediaassetsdk.UploadMedia) obj;
 
-    if (hasAction() != other.hasAction()) return false;
-    if (hasAction()) {
-      if (!getAction()
-          .equals(other.getAction())) return false;
-    }
-    if (hasTIBusinessID() != other.hasTIBusinessID()) return false;
-    if (hasTIBusinessID()) {
-      if (getTIBusinessID()
-          != other.getTIBusinessID()) return false;
-    }
-    if (hasTIProjectID() != other.hasTIProjectID()) return false;
-    if (hasTIProjectID()) {
-      if (getTIProjectID()
-          != other.getTIProjectID()) return false;
-    }
     if (hasName() != other.hasName()) return false;
     if (hasName()) {
       if (!getName()
           .equals(other.getName())) return false;
+    }
+    if (hasLocalPath() != other.hasLocalPath()) return false;
+    if (hasLocalPath()) {
+      if (!getLocalPath()
+          .equals(other.getLocalPath())) return false;
+    }
+    if (hasMediaURL() != other.hasMediaURL()) return false;
+    if (hasMediaURL()) {
+      if (!getMediaURL()
+          .equals(other.getMediaURL())) return false;
     }
     if (hasMediaMeta() != other.hasMediaMeta()) return false;
     if (hasMediaMeta()) {
       if (!getMediaMeta()
           .equals(other.getMediaMeta())) return false;
     }
-    if (hasSize() != other.hasSize()) return false;
-    if (hasSize()) {
-      if (!getSize()
-          .equals(other.getSize())) return false;
-    }
     if (hasContentMD5() != other.hasContentMD5()) return false;
     if (hasContentMD5()) {
       if (!getContentMD5()
           .equals(other.getContentMD5())) return false;
-    }
-    if (hasInner() != other.hasInner()) return false;
-    if (hasInner()) {
-      if (getInner()
-          != other.getInner()) return false;
-    }
-    if (hasUsePutObject() != other.hasUsePutObject()) return false;
-    if (hasUsePutObject()) {
-      if (getUsePutObject()
-          != other.getUsePutObject()) return false;
     }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
@@ -582,111 +438,94 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasAction()) {
-      hash = (37 * hash) + ACTION_FIELD_NUMBER;
-      hash = (53 * hash) + getAction().hashCode();
-    }
-    if (hasTIBusinessID()) {
-      hash = (37 * hash) + TIBUSINESSID_FIELD_NUMBER;
-      hash = (53 * hash) + getTIBusinessID();
-    }
-    if (hasTIProjectID()) {
-      hash = (37 * hash) + TIPROJECTID_FIELD_NUMBER;
-      hash = (53 * hash) + getTIProjectID();
-    }
     if (hasName()) {
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
+    }
+    if (hasLocalPath()) {
+      hash = (37 * hash) + LOCALPATH_FIELD_NUMBER;
+      hash = (53 * hash) + getLocalPath().hashCode();
+    }
+    if (hasMediaURL()) {
+      hash = (37 * hash) + MEDIAURL_FIELD_NUMBER;
+      hash = (53 * hash) + getMediaURL().hashCode();
     }
     if (hasMediaMeta()) {
       hash = (37 * hash) + MEDIAMETA_FIELD_NUMBER;
       hash = (53 * hash) + getMediaMeta().hashCode();
     }
-    if (hasSize()) {
-      hash = (37 * hash) + SIZE_FIELD_NUMBER;
-      hash = (53 * hash) + getSize().hashCode();
-    }
     if (hasContentMD5()) {
       hash = (37 * hash) + CONTENTMD5_FIELD_NUMBER;
       hash = (53 * hash) + getContentMD5().hashCode();
-    }
-    if (hasInner()) {
-      hash = (37 * hash) + INNER_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getInner());
-    }
-    if (hasUsePutObject()) {
-      hash = (37 * hash) + USEPUTOBJECT_FIELD_NUMBER;
-      hash = (53 * hash) + getUsePutObject();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(
+  public static com.mediaassetsdk.UploadMedia parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(
+  public static com.mediaassetsdk.UploadMedia parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(
+  public static com.mediaassetsdk.UploadMedia parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(
+  public static com.mediaassetsdk.UploadMedia parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(byte[] data)
+  public static com.mediaassetsdk.UploadMedia parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(
+  public static com.mediaassetsdk.UploadMedia parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(java.io.InputStream input)
+  public static com.mediaassetsdk.UploadMedia parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(
+  public static com.mediaassetsdk.UploadMedia parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.mediaassetsdk.UploadMedia parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseDelimitedFrom(
+  public static com.mediaassetsdk.UploadMedia parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(
+  public static com.mediaassetsdk.UploadMedia parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.mediaassetsdk.ApplyUploadRequest parseFrom(
+  public static com.mediaassetsdk.UploadMedia parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -699,7 +538,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.mediaassetsdk.ApplyUploadRequest prototype) {
+  public static Builder newBuilder(com.mediaassetsdk.UploadMedia prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -715,26 +554,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ApplyUploadRequest}
+   * Protobuf type {@code UploadMedia}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ApplyUploadRequest)
-      com.mediaassetsdk.ApplyUploadRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:UploadMedia)
+      com.mediaassetsdk.UploadMediaOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.mediaassetsdk.MediaAsset.internal_static_ApplyUploadRequest_descriptor;
+      return com.mediaassetsdk.MediaAsset.internal_static_UploadMedia_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.mediaassetsdk.MediaAsset.internal_static_ApplyUploadRequest_fieldAccessorTable
+      return com.mediaassetsdk.MediaAsset.internal_static_UploadMedia_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.mediaassetsdk.ApplyUploadRequest.class, com.mediaassetsdk.ApplyUploadRequest.Builder.class);
+              com.mediaassetsdk.UploadMedia.class, com.mediaassetsdk.UploadMedia.Builder.class);
     }
 
-    // Construct using com.mediaassetsdk.ApplyUploadRequest.newBuilder()
+    // Construct using com.mediaassetsdk.UploadMedia.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -753,45 +592,37 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      action_ = "";
-      bitField0_ = (bitField0_ & ~0x00000001);
-      tIBusinessID_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000002);
-      tIProjectID_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000004);
       name_ = "";
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000001);
+      localPath_ = "";
+      bitField0_ = (bitField0_ & ~0x00000002);
+      mediaURL_ = "";
+      bitField0_ = (bitField0_ & ~0x00000004);
       if (mediaMetaBuilder_ == null) {
         mediaMeta_ = null;
       } else {
         mediaMetaBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000010);
-      size_ = "";
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000008);
       contentMD5_ = "";
-      bitField0_ = (bitField0_ & ~0x00000040);
-      inner_ = false;
-      bitField0_ = (bitField0_ & ~0x00000080);
-      usePutObject_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000100);
+      bitField0_ = (bitField0_ & ~0x00000010);
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.mediaassetsdk.MediaAsset.internal_static_ApplyUploadRequest_descriptor;
+      return com.mediaassetsdk.MediaAsset.internal_static_UploadMedia_descriptor;
     }
 
     @java.lang.Override
-    public com.mediaassetsdk.ApplyUploadRequest getDefaultInstanceForType() {
-      return com.mediaassetsdk.ApplyUploadRequest.getDefaultInstance();
+    public com.mediaassetsdk.UploadMedia getDefaultInstanceForType() {
+      return com.mediaassetsdk.UploadMedia.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.mediaassetsdk.ApplyUploadRequest build() {
-      com.mediaassetsdk.ApplyUploadRequest result = buildPartial();
+    public com.mediaassetsdk.UploadMedia build() {
+      com.mediaassetsdk.UploadMedia result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -799,50 +630,34 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.mediaassetsdk.ApplyUploadRequest buildPartial() {
-      com.mediaassetsdk.ApplyUploadRequest result = new com.mediaassetsdk.ApplyUploadRequest(this);
+    public com.mediaassetsdk.UploadMedia buildPartial() {
+      com.mediaassetsdk.UploadMedia result = new com.mediaassetsdk.UploadMedia(this);
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         to_bitField0_ |= 0x00000001;
       }
-      result.action_ = action_;
+      result.name_ = name_;
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.tIBusinessID_ = tIBusinessID_;
         to_bitField0_ |= 0x00000002;
       }
+      result.localPath_ = localPath_;
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.tIProjectID_ = tIProjectID_;
         to_bitField0_ |= 0x00000004;
       }
+      result.mediaURL_ = mediaURL_;
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        to_bitField0_ |= 0x00000008;
-      }
-      result.name_ = name_;
-      if (((from_bitField0_ & 0x00000010) != 0)) {
         if (mediaMetaBuilder_ == null) {
           result.mediaMeta_ = mediaMeta_;
         } else {
           result.mediaMeta_ = mediaMetaBuilder_.build();
         }
+        to_bitField0_ |= 0x00000008;
+      }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
         to_bitField0_ |= 0x00000010;
       }
-      if (((from_bitField0_ & 0x00000020) != 0)) {
-        to_bitField0_ |= 0x00000020;
-      }
-      result.size_ = size_;
-      if (((from_bitField0_ & 0x00000040) != 0)) {
-        to_bitField0_ |= 0x00000040;
-      }
       result.contentMD5_ = contentMD5_;
-      if (((from_bitField0_ & 0x00000080) != 0)) {
-        result.inner_ = inner_;
-        to_bitField0_ |= 0x00000080;
-      }
-      if (((from_bitField0_ & 0x00000100) != 0)) {
-        result.usePutObject_ = usePutObject_;
-        to_bitField0_ |= 0x00000100;
-      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -882,50 +697,38 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.mediaassetsdk.ApplyUploadRequest) {
-        return mergeFrom((com.mediaassetsdk.ApplyUploadRequest)other);
+      if (other instanceof com.mediaassetsdk.UploadMedia) {
+        return mergeFrom((com.mediaassetsdk.UploadMedia)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.mediaassetsdk.ApplyUploadRequest other) {
-      if (other == com.mediaassetsdk.ApplyUploadRequest.getDefaultInstance()) return this;
-      if (other.hasAction()) {
+    public Builder mergeFrom(com.mediaassetsdk.UploadMedia other) {
+      if (other == com.mediaassetsdk.UploadMedia.getDefaultInstance()) return this;
+      if (other.hasName()) {
         bitField0_ |= 0x00000001;
-        action_ = other.action_;
+        name_ = other.name_;
         onChanged();
       }
-      if (other.hasTIBusinessID()) {
-        setTIBusinessID(other.getTIBusinessID());
+      if (other.hasLocalPath()) {
+        bitField0_ |= 0x00000002;
+        localPath_ = other.localPath_;
+        onChanged();
       }
-      if (other.hasTIProjectID()) {
-        setTIProjectID(other.getTIProjectID());
-      }
-      if (other.hasName()) {
-        bitField0_ |= 0x00000008;
-        name_ = other.name_;
+      if (other.hasMediaURL()) {
+        bitField0_ |= 0x00000004;
+        mediaURL_ = other.mediaURL_;
         onChanged();
       }
       if (other.hasMediaMeta()) {
         mergeMediaMeta(other.getMediaMeta());
       }
-      if (other.hasSize()) {
-        bitField0_ |= 0x00000020;
-        size_ = other.size_;
-        onChanged();
-      }
       if (other.hasContentMD5()) {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000010;
         contentMD5_ = other.contentMD5_;
         onChanged();
-      }
-      if (other.hasInner()) {
-        setInner(other.getInner());
-      }
-      if (other.hasUsePutObject()) {
-        setUsePutObject(other.getUsePutObject());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -942,11 +745,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.mediaassetsdk.ApplyUploadRequest parsedMessage = null;
+      com.mediaassetsdk.UploadMedia parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.mediaassetsdk.ApplyUploadRequest) e.getUnfinishedMessage();
+        parsedMessage = (com.mediaassetsdk.UploadMedia) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -957,177 +760,16 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.lang.Object action_ = "";
-    /**
-     * <code>optional string Action = 1;</code>
-     * @return Whether the action field is set.
-     */
-    public boolean hasAction() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional string Action = 1;</code>
-     * @return The action.
-     */
-    public java.lang.String getAction() {
-      java.lang.Object ref = action_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        action_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>optional string Action = 1;</code>
-     * @return The bytes for action.
-     */
-    public com.google.protobuf.ByteString
-        getActionBytes() {
-      java.lang.Object ref = action_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        action_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>optional string Action = 1;</code>
-     * @param value The action to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAction(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-      action_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional string Action = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAction() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      action_ = getDefaultInstance().getAction();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional string Action = 1;</code>
-     * @param value The bytes for action to set.
-     * @return This builder for chaining.
-     */
-    public Builder setActionBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000001;
-      action_ = value;
-      onChanged();
-      return this;
-    }
-
-    private int tIBusinessID_ ;
-    /**
-     * <code>optional int32 TIBusinessID = 2;</code>
-     * @return Whether the tIBusinessID field is set.
-     */
-    @java.lang.Override
-    public boolean hasTIBusinessID() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional int32 TIBusinessID = 2;</code>
-     * @return The tIBusinessID.
-     */
-    @java.lang.Override
-    public int getTIBusinessID() {
-      return tIBusinessID_;
-    }
-    /**
-     * <code>optional int32 TIBusinessID = 2;</code>
-     * @param value The tIBusinessID to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTIBusinessID(int value) {
-      bitField0_ |= 0x00000002;
-      tIBusinessID_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional int32 TIBusinessID = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearTIBusinessID() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      tIBusinessID_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int tIProjectID_ ;
-    /**
-     * <code>optional int32 TIProjectID = 3;</code>
-     * @return Whether the tIProjectID field is set.
-     */
-    @java.lang.Override
-    public boolean hasTIProjectID() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional int32 TIProjectID = 3;</code>
-     * @return The tIProjectID.
-     */
-    @java.lang.Override
-    public int getTIProjectID() {
-      return tIProjectID_;
-    }
-    /**
-     * <code>optional int32 TIProjectID = 3;</code>
-     * @param value The tIProjectID to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTIProjectID(int value) {
-      bitField0_ |= 0x00000004;
-      tIProjectID_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional int32 TIProjectID = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearTIProjectID() {
-      bitField0_ = (bitField0_ & ~0x00000004);
-      tIProjectID_ = 0;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object name_ = "";
     /**
-     * <code>optional string Name = 4;</code>
+     * <code>optional string Name = 1;</code>
      * @return Whether the name field is set.
      */
     public boolean hasName() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional string Name = 4;</code>
+     * <code>optional string Name = 1;</code>
      * @return The name.
      */
     public java.lang.String getName() {
@@ -1143,7 +785,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string Name = 4;</code>
+     * <code>optional string Name = 1;</code>
      * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
@@ -1160,7 +802,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string Name = 4;</code>
+     * <code>optional string Name = 1;</code>
      * @param value The name to set.
      * @return This builder for chaining.
      */
@@ -1169,23 +811,23 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000008;
+  bitField0_ |= 0x00000001;
       name_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional string Name = 4;</code>
+     * <code>optional string Name = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearName() {
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000001);
       name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
     /**
-     * <code>optional string Name = 4;</code>
+     * <code>optional string Name = 1;</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
@@ -1195,8 +837,174 @@ private static final long serialVersionUID = 0L;
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000001;
       name_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object localPath_ = "";
+    /**
+     * <code>optional string LocalPath = 2;</code>
+     * @return Whether the localPath field is set.
+     */
+    public boolean hasLocalPath() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string LocalPath = 2;</code>
+     * @return The localPath.
+     */
+    public java.lang.String getLocalPath() {
+      java.lang.Object ref = localPath_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        localPath_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string LocalPath = 2;</code>
+     * @return The bytes for localPath.
+     */
+    public com.google.protobuf.ByteString
+        getLocalPathBytes() {
+      java.lang.Object ref = localPath_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        localPath_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string LocalPath = 2;</code>
+     * @param value The localPath to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLocalPath(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+      localPath_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string LocalPath = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLocalPath() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      localPath_ = getDefaultInstance().getLocalPath();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string LocalPath = 2;</code>
+     * @param value The bytes for localPath to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLocalPathBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000002;
+      localPath_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object mediaURL_ = "";
+    /**
+     * <code>optional string MediaURL = 3;</code>
+     * @return Whether the mediaURL field is set.
+     */
+    public boolean hasMediaURL() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string MediaURL = 3;</code>
+     * @return The mediaURL.
+     */
+    public java.lang.String getMediaURL() {
+      java.lang.Object ref = mediaURL_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        mediaURL_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>optional string MediaURL = 3;</code>
+     * @return The bytes for mediaURL.
+     */
+    public com.google.protobuf.ByteString
+        getMediaURLBytes() {
+      java.lang.Object ref = mediaURL_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        mediaURL_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>optional string MediaURL = 3;</code>
+     * @param value The mediaURL to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMediaURL(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+      mediaURL_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string MediaURL = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMediaURL() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      mediaURL_ = getDefaultInstance().getMediaURL();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>optional string MediaURL = 3;</code>
+     * @param value The bytes for mediaURL to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMediaURLBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      bitField0_ |= 0x00000004;
+      mediaURL_ = value;
       onChanged();
       return this;
     }
@@ -1205,14 +1013,14 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.mediaassetsdk.MediaMeta, com.mediaassetsdk.MediaMeta.Builder, com.mediaassetsdk.MediaMetaOrBuilder> mediaMetaBuilder_;
     /**
-     * <code>optional .MediaMeta MediaMeta = 5;</code>
+     * <code>optional .MediaMeta MediaMeta = 4;</code>
      * @return Whether the mediaMeta field is set.
      */
     public boolean hasMediaMeta() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>optional .MediaMeta MediaMeta = 5;</code>
+     * <code>optional .MediaMeta MediaMeta = 4;</code>
      * @return The mediaMeta.
      */
     public com.mediaassetsdk.MediaMeta getMediaMeta() {
@@ -1223,7 +1031,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional .MediaMeta MediaMeta = 5;</code>
+     * <code>optional .MediaMeta MediaMeta = 4;</code>
      */
     public Builder setMediaMeta(com.mediaassetsdk.MediaMeta value) {
       if (mediaMetaBuilder_ == null) {
@@ -1235,11 +1043,11 @@ private static final long serialVersionUID = 0L;
       } else {
         mediaMetaBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000008;
       return this;
     }
     /**
-     * <code>optional .MediaMeta MediaMeta = 5;</code>
+     * <code>optional .MediaMeta MediaMeta = 4;</code>
      */
     public Builder setMediaMeta(
         com.mediaassetsdk.MediaMeta.Builder builderForValue) {
@@ -1249,15 +1057,15 @@ private static final long serialVersionUID = 0L;
       } else {
         mediaMetaBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000008;
       return this;
     }
     /**
-     * <code>optional .MediaMeta MediaMeta = 5;</code>
+     * <code>optional .MediaMeta MediaMeta = 4;</code>
      */
     public Builder mergeMediaMeta(com.mediaassetsdk.MediaMeta value) {
       if (mediaMetaBuilder_ == null) {
-        if (((bitField0_ & 0x00000010) != 0) &&
+        if (((bitField0_ & 0x00000008) != 0) &&
             mediaMeta_ != null &&
             mediaMeta_ != com.mediaassetsdk.MediaMeta.getDefaultInstance()) {
           mediaMeta_ =
@@ -1269,11 +1077,11 @@ private static final long serialVersionUID = 0L;
       } else {
         mediaMetaBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000008;
       return this;
     }
     /**
-     * <code>optional .MediaMeta MediaMeta = 5;</code>
+     * <code>optional .MediaMeta MediaMeta = 4;</code>
      */
     public Builder clearMediaMeta() {
       if (mediaMetaBuilder_ == null) {
@@ -1282,19 +1090,19 @@ private static final long serialVersionUID = 0L;
       } else {
         mediaMetaBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000008);
       return this;
     }
     /**
-     * <code>optional .MediaMeta MediaMeta = 5;</code>
+     * <code>optional .MediaMeta MediaMeta = 4;</code>
      */
     public com.mediaassetsdk.MediaMeta.Builder getMediaMetaBuilder() {
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000008;
       onChanged();
       return getMediaMetaFieldBuilder().getBuilder();
     }
     /**
-     * <code>optional .MediaMeta MediaMeta = 5;</code>
+     * <code>optional .MediaMeta MediaMeta = 4;</code>
      */
     public com.mediaassetsdk.MediaMetaOrBuilder getMediaMetaOrBuilder() {
       if (mediaMetaBuilder_ != null) {
@@ -1305,7 +1113,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional .MediaMeta MediaMeta = 5;</code>
+     * <code>optional .MediaMeta MediaMeta = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.mediaassetsdk.MediaMeta, com.mediaassetsdk.MediaMeta.Builder, com.mediaassetsdk.MediaMetaOrBuilder> 
@@ -1321,99 +1129,16 @@ private static final long serialVersionUID = 0L;
       return mediaMetaBuilder_;
     }
 
-    private java.lang.Object size_ = "";
-    /**
-     * <code>optional string Size = 6;</code>
-     * @return Whether the size field is set.
-     */
-    public boolean hasSize() {
-      return ((bitField0_ & 0x00000020) != 0);
-    }
-    /**
-     * <code>optional string Size = 6;</code>
-     * @return The size.
-     */
-    public java.lang.String getSize() {
-      java.lang.Object ref = size_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        size_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>optional string Size = 6;</code>
-     * @return The bytes for size.
-     */
-    public com.google.protobuf.ByteString
-        getSizeBytes() {
-      java.lang.Object ref = size_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        size_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>optional string Size = 6;</code>
-     * @param value The size to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSize(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000020;
-      size_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional string Size = 6;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearSize() {
-      bitField0_ = (bitField0_ & ~0x00000020);
-      size_ = getDefaultInstance().getSize();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional string Size = 6;</code>
-     * @param value The bytes for size to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSizeBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000020;
-      size_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object contentMD5_ = "";
     /**
-     * <code>optional string ContentMD5 = 7;</code>
+     * <code>optional string ContentMD5 = 5;</code>
      * @return Whether the contentMD5 field is set.
      */
     public boolean hasContentMD5() {
-      return ((bitField0_ & 0x00000040) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>optional string ContentMD5 = 7;</code>
+     * <code>optional string ContentMD5 = 5;</code>
      * @return The contentMD5.
      */
     public java.lang.String getContentMD5() {
@@ -1429,7 +1154,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string ContentMD5 = 7;</code>
+     * <code>optional string ContentMD5 = 5;</code>
      * @return The bytes for contentMD5.
      */
     public com.google.protobuf.ByteString
@@ -1446,7 +1171,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string ContentMD5 = 7;</code>
+     * <code>optional string ContentMD5 = 5;</code>
      * @param value The contentMD5 to set.
      * @return This builder for chaining.
      */
@@ -1455,23 +1180,23 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00000010;
       contentMD5_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional string ContentMD5 = 7;</code>
+     * <code>optional string ContentMD5 = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearContentMD5() {
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000010);
       contentMD5_ = getDefaultInstance().getContentMD5();
       onChanged();
       return this;
     }
     /**
-     * <code>optional string ContentMD5 = 7;</code>
+     * <code>optional string ContentMD5 = 5;</code>
      * @param value The bytes for contentMD5 to set.
      * @return This builder for chaining.
      */
@@ -1481,86 +1206,8 @@ private static final long serialVersionUID = 0L;
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000010;
       contentMD5_ = value;
-      onChanged();
-      return this;
-    }
-
-    private boolean inner_ ;
-    /**
-     * <code>optional bool Inner = 8;</code>
-     * @return Whether the inner field is set.
-     */
-    @java.lang.Override
-    public boolean hasInner() {
-      return ((bitField0_ & 0x00000080) != 0);
-    }
-    /**
-     * <code>optional bool Inner = 8;</code>
-     * @return The inner.
-     */
-    @java.lang.Override
-    public boolean getInner() {
-      return inner_;
-    }
-    /**
-     * <code>optional bool Inner = 8;</code>
-     * @param value The inner to set.
-     * @return This builder for chaining.
-     */
-    public Builder setInner(boolean value) {
-      bitField0_ |= 0x00000080;
-      inner_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional bool Inner = 8;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearInner() {
-      bitField0_ = (bitField0_ & ~0x00000080);
-      inner_ = false;
-      onChanged();
-      return this;
-    }
-
-    private int usePutObject_ ;
-    /**
-     * <code>optional int32 UsePutObject = 9;</code>
-     * @return Whether the usePutObject field is set.
-     */
-    @java.lang.Override
-    public boolean hasUsePutObject() {
-      return ((bitField0_ & 0x00000100) != 0);
-    }
-    /**
-     * <code>optional int32 UsePutObject = 9;</code>
-     * @return The usePutObject.
-     */
-    @java.lang.Override
-    public int getUsePutObject() {
-      return usePutObject_;
-    }
-    /**
-     * <code>optional int32 UsePutObject = 9;</code>
-     * @param value The usePutObject to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUsePutObject(int value) {
-      bitField0_ |= 0x00000100;
-      usePutObject_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional int32 UsePutObject = 9;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearUsePutObject() {
-      bitField0_ = (bitField0_ & ~0x00000100);
-      usePutObject_ = 0;
       onChanged();
       return this;
     }
@@ -1577,41 +1224,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ApplyUploadRequest)
+    // @@protoc_insertion_point(builder_scope:UploadMedia)
   }
 
-  // @@protoc_insertion_point(class_scope:ApplyUploadRequest)
-  private static final com.mediaassetsdk.ApplyUploadRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:UploadMedia)
+  private static final com.mediaassetsdk.UploadMedia DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.mediaassetsdk.ApplyUploadRequest();
+    DEFAULT_INSTANCE = new com.mediaassetsdk.UploadMedia();
   }
 
-  public static com.mediaassetsdk.ApplyUploadRequest getDefaultInstance() {
+  public static com.mediaassetsdk.UploadMedia getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ApplyUploadRequest>
-      PARSER = new com.google.protobuf.AbstractParser<ApplyUploadRequest>() {
+  private static final com.google.protobuf.Parser<UploadMedia>
+      PARSER = new com.google.protobuf.AbstractParser<UploadMedia>() {
     @java.lang.Override
-    public ApplyUploadRequest parsePartialFrom(
+    public UploadMedia parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ApplyUploadRequest(input, extensionRegistry);
+      return new UploadMedia(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ApplyUploadRequest> parser() {
+  public static com.google.protobuf.Parser<UploadMedia> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ApplyUploadRequest> getParserForType() {
+  public com.google.protobuf.Parser<UploadMedia> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.mediaassetsdk.ApplyUploadRequest getDefaultInstanceForType() {
+  public com.mediaassetsdk.UploadMedia getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

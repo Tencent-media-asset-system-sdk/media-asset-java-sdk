@@ -180,6 +180,15 @@ public class MediaAssetClient {
 		if (!request.hasSize()) {
 			return rsp.setError(makeError("ErrParameterInvalid", "Size 参数为空")).build();
 		}
+		try {
+		   int sz = Integer.parseInt(request.getSize());
+		   if (sz <= UPLOAD_BLOCK_SIZE) {
+		  	 request = request.toBuilder().setUsePutObject(1).build();
+		   }
+		} catch (NumberFormatException e) {
+		   e.printStackTrace();
+		   return rsp.setError(makeError("ErrParameterInvalid", "Size 参数不是整数字符串")).build();
+		}
 		String body = JsonFormat.printer().print(request);
 
 		TiSign ts = new TiSign(host, action, version, service, contentType, httpMethod, secretId, secretKey);
@@ -825,7 +834,44 @@ public class MediaAssetClient {
 			IOUtils.closeQuietly(httpclient);
 		}
 	}
+	
+	public com.mediaassetsdk.CreateMediasResponse createMedias(com.mediaassetsdk.CreateMediasRequest request)
+			throws HttpException, IOException {
+		String action = "CreateMedias";
+		String service = "app-cdn4aowk";
+		String version = "2021-02-26";
+		String contentType = "application/json";
+		String httpMethod = "POST";
+		String secretId = this.secretID;
+		String secretKey = this.secretKey;
+		request = request.toBuilder().setAction(action).build();
+		if (!request.hasTIBusinessID()) {
+			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+		}
+		if (!request.hasTIProjectID()) {
+			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+		}
+		com.mediaassetsdk.CreateMediasResponse.Builder rsp = com.mediaassetsdk.CreateMediasResponse.newBuilder();
+		if (request.getUploadMediaSetCount() == 0) {
+			return rsp.setError(makeError("ErrParameterInvalid", "媒体参数列表为空")).build();
+		}
+		
+		String body = JsonFormat.printer().print(request);
 
+		TiSign ts = new TiSign(host, action, version, service, contentType, httpMethod, secretId, secretKey);
+		HashMap<String, String> httpHeaderMap = new HashMap<String, String>();
+		try {
+			ts.CreateHeaderWithSignature(httpHeaderMap);
+		} catch (Exception e) {
+			throw new IOException("生成签名错误: " + e.toString());
+		}
+
+		String response = com.mediaassetsdk.HttpClientUtil.doPost(httpHeaderMap, this.endPoint + "/gateway", body);
+		JsonObject json = (JsonObject) new JsonParser().parse(response);
+		JsonFormat.parser().ignoringUnknownFields().merge(json.get("Response").toString(), rsp);
+		return rsp.build();
+	}
+	
 	public static String calcMD5(byte[] buffer) throws RuntimeException {
 		byte[] secretBytes = null;
 		try {

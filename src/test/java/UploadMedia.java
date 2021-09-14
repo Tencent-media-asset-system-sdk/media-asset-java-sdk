@@ -139,6 +139,14 @@ public class UploadMedia {
 //					.build());
 //			String lists = JsonFormat.printer().print(rsp1);
 //			System.out.println("lists response: " + lists);
+			
+//			com.mediaassetsdk.UploadMedia media = com.mediaassetsdk.UploadMedia.newBuilder().setName("Java URL上传")
+//					.setMediaURL("https://ai-media-1300074211.cos.ap-shanghai.myqcloud.com/ai-media/2021-04-06/8b46057e-1923-4444-b0fb-91b094bf7530_trans.mp4")
+//					.setMediaMeta(MediaMeta.newBuilder().setMediaType("视频").setMediaTag("新闻").build()).build();
+//			com.mediaassetsdk.CreateMediasResponse rsp = client.createMedias(
+//					com.mediaassetsdk.CreateMediasRequest.newBuilder().addUploadMediaSet(media).build());
+//			String medias = JsonFormat.printer().print(rsp);
+//			System.out.println("details response: " + medias);
 		} catch (HttpException e) {
 			System.out.println("UploadFile error: " + e.toString());
 			e.printStackTrace();
@@ -146,12 +154,11 @@ public class UploadMedia {
 			System.out.println("UploadFile error: " + e.toString());
 			e.printStackTrace();
 		} catch (MediaAssetException e) {
-			System.out.println("UploadFile error: " + e.toString());
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			System.out.println("UploadFile error: " + e.toString());
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 }

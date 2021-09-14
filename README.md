@@ -103,3 +103,12 @@ ModifyExpireTimeResponse expireRsp = client.modifyExpireTime(
   .setDays(1)
   .build());
 ```
+
+## 批量创建媒体
+```java
+com.mediaassetsdk.UploadMedia media = com.mediaassetsdk.UploadMedia.newBuilder().setName("Java URL上传")
+  .setMediaURL("https://ai-media-1300074211.cos.ap-shanghai.myqcloud.com/ai-media/2021-04-06/8b46057e-1923-4444-b0fb-91b094bf7530_trans.mp4")
+  .setMediaMeta(MediaMeta.newBuilder().setMediaType("视频").setMediaTag("新闻").build()).build();
+com.mediaassetsdk.CreateMediasResponse rsp = client.createMedias(
+com.mediaassetsdk.CreateMediasRequest.newBuilder().addUploadMediaSet(media).build());
+```
