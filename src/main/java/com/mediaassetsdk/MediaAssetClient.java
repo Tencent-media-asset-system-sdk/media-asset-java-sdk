@@ -515,7 +515,8 @@ public class MediaAssetClient {
 		com.mediaassetsdk.ApplyUploadRequest.Builder applyUploadRequest = com.mediaassetsdk.ApplyUploadRequest.newBuilder();
 		applyUploadRequest.setName(name);
 		applyUploadRequest.setSize(filelength.toString());
-		applyUploadRequest.setMediaMeta(MediaMeta.newBuilder().setMediaType("视频").setMediaTag("新闻").build());
+		applyUploadRequest.setMediaMeta(MediaMeta.newBuilder().setMediaType(type).setMediaTag(tag).
+				setMediaSecondTag(secondTag).setMediaLang(lang).build());
 		final com.mediaassetsdk.ApplyUploadResponse applyUploadRsp = this.applyUpload(applyUploadRequest.build());
 		if (applyUploadRsp.hasError()) {
 			throw new com.mediaassetsdk.MediaAssetException(
@@ -647,7 +648,8 @@ public class MediaAssetClient {
 		com.mediaassetsdk.ApplyUploadRequest.Builder applyUploadRequest = com.mediaassetsdk.ApplyUploadRequest.newBuilder();
 		applyUploadRequest.setName(name);
 		applyUploadRequest.setSize(String.valueOf(filebuf.length));
-		applyUploadRequest.setMediaMeta(MediaMeta.newBuilder().setMediaType("视频").setMediaTag("新闻").build());
+		applyUploadRequest.setMediaMeta(MediaMeta.newBuilder().setMediaType(type).setMediaTag(tag).
+				setMediaSecondTag(secondTag).setMediaLang(lang).build());
 		final com.mediaassetsdk.ApplyUploadResponse applyUploadRsp = this.applyUpload(applyUploadRequest.build());
 		if (applyUploadRsp.hasError()) {
 			throw new com.mediaassetsdk.MediaAssetException(
