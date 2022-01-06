@@ -6,7 +6,7 @@
   
   <groupId>com.tencentyoutu</groupId>
   <artifactId>media-asset-sdk</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <name>media-asset-sdk</name>
   <description>Media Asset System SDK for Java</description>
   
