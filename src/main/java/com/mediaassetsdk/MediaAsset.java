@@ -207,7 +207,7 @@ public final class MediaAsset {
       "\001 \001(\rH\000\210\001\001\022\031\n\014FailedReason\030\002 \001(\tH\001\210\001\001B\n\n" +
       "\010_MediaIDB\017\n\r_FailedReason\"\346\002\n\022ApplyUplo" +
       "adRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusi" +
-      "nessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002" +
+      "nessID\030\002 \001(\rH\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\rH\002" +
       "\210\001\001\022\021\n\004Name\030\004 \001(\tH\003\210\001\001\022\"\n\tMediaMeta\030\005 \001(" +
       "\0132\n.MediaMetaH\004\210\001\001\022\021\n\004Size\030\006 \001(\tH\005\210\001\001\022\027\n" +
       "\nContentMD5\030\007 \001(\tH\006\210\001\001\022\022\n\005Inner\030\010 \001(\010H\007\210" +
@@ -221,45 +221,45 @@ public final class MediaAsset {
       "\007_BufferB\r\n\013_PartNUmberB\t\n\007_BucketB\006\n\004_K" +
       "eyB\013\n\t_UploadID\"\213\002\n\023CommitUploadRequest\022" +
       "\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001" +
-      "(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\024\n\007Med" +
+      "(\rH\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\rH\002\210\001\001\022\024\n\007Med" +
       "iaID\030\004 \001(\rH\003\210\001\001\022\020\n\003Key\030\005 \001(\tH\004\210\001\001\022\023\n\006Buc" +
       "ket\030\006 \001(\tH\005\210\001\001\022\025\n\010UploadId\030\007 \001(\tH\006\210\001\001B\t\n" +
       "\007_ActionB\017\n\r_TIBusinessIDB\016\n\014_TIProjectI" +
       "DB\n\n\010_MediaIDB\006\n\004_KeyB\t\n\007_BucketB\013\n\t_Upl" +
       "oadId\"\221\001\n\031DescribeCategoriesRequest\022\023\n\006A" +
-      "ction\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001" +
-      "\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001B\t\n\007_Action" +
+      "ction\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\rH\001" +
+      "\210\001\001\022\030\n\013TIProjectID\030\003 \001(\rH\002\210\001\001B\t\n\007_Action" +
       "B\017\n\r_TIBusinessIDB\016\n\014_TIProjectID\"\247\001\n\033De" +
       "scribeMediaDetailsRequest\022\023\n\006Action\030\001 \001(" +
-      "\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIP" +
-      "rojectID\030\003 \001(\005H\002\210\001\001\022\022\n\nMediaIDSet\030\004 \003(\rB" +
+      "\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\rH\001\210\001\001\022\030\n\013TIP" +
+      "rojectID\030\003 \001(\rH\002\210\001\001\022\022\n\nMediaIDSet\030\004 \003(\005B" +
       "\t\n\007_ActionB\017\n\r_TIBusinessIDB\016\n\014_TIProjec" +
       "tID\"\246\002\n\025DescribeMediasRequest\022\023\n\006Action\030" +
-      "\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022\030\n" +
-      "\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\027\n\nPageNumber\030\004 " +
+      "\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\rH\001\210\001\001\022\030\n" +
+      "\013TIProjectID\030\003 \001(\rH\002\210\001\001\022\027\n\nPageNumber\030\004 " +
       "\001(\005H\003\210\001\001\022\025\n\010PageSize\030\005 \001(\005H\004\210\001\001\022\022\n\005Inner" +
       "\030\006 \001(\010H\005\210\001\001\022 \n\010FilterBy\030\007 \001(\0132\t.FilterBy" +
       "H\006\210\001\001B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016\n\014_TI" +
       "ProjectIDB\r\n\013_PageNumberB\013\n\t_PageSizeB\010\n" +
       "\006_InnerB\013\n\t_FilterBy\"\315\001\n\027ModifyExpireTim" +
       "eRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusin" +
-      "essID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210" +
+      "essID\030\002 \001(\rH\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\rH\002\210" +
       "\001\001\022\024\n\007MediaID\030\004 \001(\rH\003\210\001\001\022\021\n\004Days\030\005 \001(\005H\004" +
       "\210\001\001B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016\n\014_TIPr" +
       "ojectIDB\n\n\010_MediaIDB\007\n\005_Days\"\200\002\n\022ModifyM" +
       "ediaRequest\022\023\n\006Action\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBu" +
-      "sinessID\030\002 \001(\005H\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\005" +
+      "sinessID\030\002 \001(\rH\001\210\001\001\022\030\n\013TIProjectID\030\003 \001(\r" +
       "H\002\210\001\001\022\024\n\007MediaID\030\004 \001(\rH\003\210\001\001\022\025\n\010MediaTag\030" +
       "\005 \001(\tH\004\210\001\001\022\033\n\016MediaSecondTag\030\006 \001(\tH\005\210\001\001B" +
       "\t\n\007_ActionB\017\n\r_TIBusinessIDB\016\n\014_TIProjec" +
       "tIDB\n\n\010_MediaIDB\013\n\t_MediaTagB\021\n\017_MediaSe" +
       "condTag\"\237\001\n\023RemoveMediasRequest\022\023\n\006Actio" +
-      "n\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001\001\022" +
-      "\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022\022\n\nMediaIDSet\030" +
+      "n\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\rH\001\210\001\001\022" +
+      "\030\n\013TIProjectID\030\003 \001(\rH\002\210\001\001\022\022\n\nMediaIDSet\030" +
       "\004 \003(\rB\t\n\007_ActionB\017\n\r_TIBusinessIDB\016\n\014_TI" +
       "ProjectID\"\317\001\n\023CreateMediasRequest\022\023\n\006Act" +
-      "ion\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\005H\001\210\001" +
-      "\001\022\030\n\013TIProjectID\030\003 \001(\005H\002\210\001\001\022$\n\016UploadMed" +
+      "ion\030\001 \001(\tH\000\210\001\001\022\031\n\014TIBusinessID\030\002 \001(\rH\001\210\001" +
+      "\001\022\030\n\013TIProjectID\030\003 \001(\rH\002\210\001\001\022$\n\016UploadMed" +
       "iaSet\030\004 \003(\0132\014.UploadMedia\022\022\n\005Inner\030\005 \001(\010" +
       "H\003\210\001\001B\t\n\007_ActionB\017\n\r_TIBusinessIDB\016\n\014_TI" +
       "ProjectIDB\010\n\006_Inner\"\341\001\n\023ApplyUploadRespo" +

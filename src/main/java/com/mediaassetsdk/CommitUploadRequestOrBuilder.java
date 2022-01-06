@@ -25,23 +25,23 @@ public interface CommitUploadRequestOrBuilder extends
       getActionBytes();
 
   /**
-   * <code>optional int32 TIBusinessID = 2;</code>
+   * <code>optional uint32 TIBusinessID = 2;</code>
    * @return Whether the tIBusinessID field is set.
    */
   boolean hasTIBusinessID();
   /**
-   * <code>optional int32 TIBusinessID = 2;</code>
+   * <code>optional uint32 TIBusinessID = 2;</code>
    * @return The tIBusinessID.
    */
   int getTIBusinessID();
 
   /**
-   * <code>optional int32 TIProjectID = 3;</code>
+   * <code>optional uint32 TIProjectID = 3;</code>
    * @return Whether the tIProjectID field is set.
    */
   boolean hasTIProjectID();
   /**
-   * <code>optional int32 TIProjectID = 3;</code>
+   * <code>optional uint32 TIProjectID = 3;</code>
    * @return The tIProjectID.
    */
   int getTIProjectID();

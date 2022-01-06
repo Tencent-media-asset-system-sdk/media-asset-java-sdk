@@ -77,8 +77,8 @@ message FailedMediaInfo {
 
 message ApplyUploadRequest {
   optional string Action = 1;
-  optional int32 TIBusinessID = 2;
-  optional int32 TIProjectID = 3;
+  optional uint32 TIBusinessID = 2;
+  optional uint32 TIProjectID = 3;
   optional string Name = 4;
   optional MediaMeta MediaMeta = 5;
   optional string Size = 6;
@@ -98,8 +98,8 @@ message UploadPartRequest {
 
 message CommitUploadRequest {
   optional string Action = 1;
-  optional int32 TIBusinessID = 2;
-  optional int32 TIProjectID = 3;
+  optional uint32 TIBusinessID = 2;
+  optional uint32 TIProjectID = 3;
   optional uint32 MediaID = 4;
   optional string Key = 5;
   optional string Bucket = 6;
@@ -108,21 +108,21 @@ message CommitUploadRequest {
 
 message DescribeCategoriesRequest {
   optional string Action = 1;
-  optional int32 TIBusinessID = 2;
-  optional int32 TIProjectID = 3;
+  optional uint32 TIBusinessID = 2;
+  optional uint32 TIProjectID = 3;
 }
 
 message DescribeMediaDetailsRequest {
   optional string Action = 1;
-  optional int32 TIBusinessID = 2;
-  optional int32 TIProjectID = 3;
-  repeated uint32 MediaIDSet = 4;
+  optional uint32 TIBusinessID = 2;
+  optional uint32 TIProjectID = 3;
+  repeated int32 MediaIDSet = 4;
 }
 
 message DescribeMediasRequest {
   optional string Action = 1;
-  optional int32 TIBusinessID = 2;
-  optional int32 TIProjectID = 3;
+  optional uint32 TIBusinessID = 2;
+  optional uint32 TIProjectID = 3;
   optional int32 PageNumber = 4;
   optional int32 PageSize = 5;
   optional bool Inner = 6;
@@ -131,16 +131,16 @@ message DescribeMediasRequest {
 
 message ModifyExpireTimeRequest {
   optional string Action = 1;
-  optional int32 TIBusinessID = 2;
-  optional int32 TIProjectID = 3;
+  optional uint32 TIBusinessID = 2;
+  optional uint32 TIProjectID = 3;
   optional uint32 MediaID = 4;
   optional int32 Days = 5;
 }
 
 message ModifyMediaRequest {
   optional string Action = 1;
-  optional int32 TIBusinessID = 2;
-  optional int32 TIProjectID = 3;
+  optional uint32 TIBusinessID = 2;
+  optional uint32 TIProjectID = 3;
   optional uint32 MediaID = 4;
   optional string MediaTag = 5;
   optional string MediaSecondTag = 6;
@@ -148,15 +148,15 @@ message ModifyMediaRequest {
 
 message RemoveMediasRequest {
   optional string Action = 1;
-  optional int32 TIBusinessID = 2;
-  optional int32 TIProjectID = 3;
+  optional uint32 TIBusinessID = 2;
+  optional uint32 TIProjectID = 3;
   repeated uint32 MediaIDSet = 4;
 }
 
 message CreateMediasRequest {
   optional string Action = 1;
-  optional int32 TIBusinessID = 2;
-  optional int32 TIProjectID = 3;
+  optional uint32 TIBusinessID = 2;
+  optional uint32 TIProjectID = 3;
   repeated UploadMedia UploadMediaSet = 4;
   optional bool Inner = 5;
 }

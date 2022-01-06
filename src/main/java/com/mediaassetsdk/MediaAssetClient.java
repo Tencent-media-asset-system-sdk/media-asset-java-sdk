@@ -28,6 +28,7 @@ import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
 
+import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.util.JsonFormat;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -50,10 +51,10 @@ public class MediaAssetClient {
 	private String secretKey;
 
 	// 业务 ID
-	private int tiBusinessID;
+	private long tiBusinessID;
 
 	// 项目 ID
-	private int tiProjectID;
+	private long tiProjectID;
 
 	private void makeEndPoint() {
 		this.endPoint = "http://" + this.host;
@@ -88,8 +89,8 @@ public class MediaAssetClient {
 		return rsp.build();
 	}
 
-	public MediaAssetClient(String host, String port, String secretID, String secretKey, int tiBusinessID,
-			int tiProjectID) {
+	public MediaAssetClient(String host, String port, String secretID, String secretKey, long tiBusinessID,
+			long tiProjectID) {
 		super();
 		this.host = host;
 		this.port = port;
@@ -134,19 +135,19 @@ public class MediaAssetClient {
 		this.secretKey = secretKey;
 	}
 
-	public int getTiBusinessID() {
+	public long getTiBusinessID() {
 		return tiBusinessID;
 	}
 
-	public void setTiBusinessID(int tiBusinessID) {
+	public void setTiBusinessID(long tiBusinessID) {
 		this.tiBusinessID = tiBusinessID;
 	}
 
-	public int getTiProjectID() {
+	public long getTiProjectID() {
 		return tiProjectID;
 	}
 
-	public void setTiProjectID(int tiProjectID) {
+	public void setTiProjectID(long tiProjectID) {
 		this.tiProjectID = tiProjectID;
 	}
 
@@ -165,10 +166,10 @@ public class MediaAssetClient {
 		String secretKey = this.secretKey;
 		request = request.toBuilder().setAction(action).build();
 		if (!request.hasTIBusinessID()) {
-			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+			request = request.toBuilder().setTIBusinessID((int)this.tiBusinessID).build();
 		}
 		if (!request.hasTIProjectID()) {
-			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+			request = request.toBuilder().setTIProjectID((int)this.tiProjectID).build();
 		}
 		com.mediaassetsdk.ApplyUploadResponse.Builder rsp = com.mediaassetsdk.ApplyUploadResponse.newBuilder();
 		if (!request.hasName()) {
@@ -181,7 +182,7 @@ public class MediaAssetClient {
 			return rsp.setError(makeError("ErrParameterInvalid", "Size 参数为空")).build();
 		}
 		try {
-		   int sz = Integer.parseInt(request.getSize());
+		   long sz = Long.parseLong(request.getSize());
 		   if (sz <= UPLOAD_BLOCK_SIZE) {
 		  	 request = request.toBuilder().setUsePutObject(1).build();
 		   }
@@ -189,8 +190,8 @@ public class MediaAssetClient {
 		   e.printStackTrace();
 		   return rsp.setError(makeError("ErrParameterInvalid", "Size 参数不是整数字符串")).build();
 		}
+		
 		String body = JsonFormat.printer().print(request);
-
 		TiSign ts = new TiSign(host, action, version, service, contentType, httpMethod, secretId, secretKey);
 		HashMap<String, String> httpHeaderMap = new HashMap<String, String>();
 		try {
@@ -259,10 +260,10 @@ public class MediaAssetClient {
 		String secretKey = this.secretKey;
 		request = request.toBuilder().setAction(action).build();
 		if (!request.hasTIBusinessID()) {
-			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+			request = request.toBuilder().setTIBusinessID((int)this.tiBusinessID).build();
 		}
 		if (!request.hasTIProjectID()) {
-			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+			request = request.toBuilder().setTIProjectID((int)this.tiProjectID).build();
 		}
 		com.mediaassetsdk.CommitUploadResponse.Builder rsp = com.mediaassetsdk.CommitUploadResponse.newBuilder();
 		if (!request.hasMediaID()) {
@@ -303,10 +304,10 @@ public class MediaAssetClient {
 		String secretKey = this.secretKey;
 		request = request.toBuilder().setAction(action).build();
 		if (!request.hasTIBusinessID()) {
-			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+			request = request.toBuilder().setTIBusinessID((int)this.tiBusinessID).build();
 		}
 		if (!request.hasTIProjectID()) {
-			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+			request = request.toBuilder().setTIProjectID((int)this.tiProjectID).build();
 		}
 		com.mediaassetsdk.DescribeCategoriesResponse.Builder rsp = com.mediaassetsdk.DescribeCategoriesResponse
 				.newBuilder();
@@ -337,10 +338,10 @@ public class MediaAssetClient {
 		String secretKey = this.secretKey;
 		request = request.toBuilder().setAction(action).build();
 		if (!request.hasTIBusinessID()) {
-			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+			request = request.toBuilder().setTIBusinessID((int)this.tiBusinessID).build();
 		}
 		if (!request.hasTIProjectID()) {
-			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+			request = request.toBuilder().setTIProjectID((int)this.tiProjectID).build();
 		}
 		com.mediaassetsdk.DescribeMediaDetailsResponse.Builder rsp = com.mediaassetsdk.DescribeMediaDetailsResponse
 				.newBuilder();
@@ -374,10 +375,10 @@ public class MediaAssetClient {
 		String secretKey = this.secretKey;
 		request = request.toBuilder().setAction(action).build();
 		if (!request.hasTIBusinessID()) {
-			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+			request = request.toBuilder().setTIBusinessID((int)this.tiBusinessID).build();
 		}
 		if (!request.hasTIProjectID()) {
-			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+			request = request.toBuilder().setTIProjectID((int)this.tiProjectID).build();
 		}
 		com.mediaassetsdk.DescribeMediasResponse.Builder rsp = com.mediaassetsdk.DescribeMediasResponse.newBuilder();
 		String body = JsonFormat.printer().print(request);
@@ -407,10 +408,10 @@ public class MediaAssetClient {
 		String secretKey = this.secretKey;
 		request = request.toBuilder().setAction(action).build();
 		if (!request.hasTIBusinessID()) {
-			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+			request = request.toBuilder().setTIBusinessID((int)this.tiBusinessID).build();
 		}
 		if (!request.hasTIProjectID()) {
-			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+			request = request.toBuilder().setTIProjectID((int)this.tiProjectID).build();
 		}
 
 		com.mediaassetsdk.ModifyExpireTimeResponse.Builder rsp = com.mediaassetsdk.ModifyExpireTimeResponse.newBuilder();
@@ -447,10 +448,10 @@ public class MediaAssetClient {
 		String secretKey = this.secretKey;
 		request = request.toBuilder().setAction(action).build();
 		if (!request.hasTIBusinessID()) {
-			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+			request = request.toBuilder().setTIBusinessID((int)this.tiBusinessID).build();
 		}
 		if (!request.hasTIProjectID()) {
-			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+			request = request.toBuilder().setTIProjectID((int)this.tiProjectID).build();
 		}
 
 		com.mediaassetsdk.ModifyMediaResponse.Builder rsp = com.mediaassetsdk.ModifyMediaResponse.newBuilder();
@@ -487,10 +488,10 @@ public class MediaAssetClient {
 		String secretKey = this.secretKey;
 		request = request.toBuilder().setAction(action).build();
 		if (!request.hasTIBusinessID()) {
-			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+			request = request.toBuilder().setTIBusinessID((int)this.tiBusinessID).build();
 		}
 		if (!request.hasTIProjectID()) {
-			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+			request = request.toBuilder().setTIProjectID((int)this.tiProjectID).build();
 		}
 
 		com.mediaassetsdk.RemoveMediasResponse.Builder rsp = com.mediaassetsdk.RemoveMediasResponse.newBuilder();
@@ -848,10 +849,10 @@ public class MediaAssetClient {
 		String secretKey = this.secretKey;
 		request = request.toBuilder().setAction(action).build();
 		if (!request.hasTIBusinessID()) {
-			request = request.toBuilder().setTIBusinessID(this.tiBusinessID).build();
+			request = request.toBuilder().setTIBusinessID((int)this.tiBusinessID).build();
 		}
 		if (!request.hasTIProjectID()) {
-			request = request.toBuilder().setTIProjectID(this.tiProjectID).build();
+			request = request.toBuilder().setTIProjectID((int)this.tiProjectID).build();
 		}
 		com.mediaassetsdk.CreateMediasResponse.Builder rsp = com.mediaassetsdk.CreateMediasResponse.newBuilder();
 		if (request.getUploadMediaSetCount() == 0) {

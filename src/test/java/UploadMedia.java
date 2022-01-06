@@ -44,7 +44,8 @@ public class UploadMedia {
 		// Parse the program arguments
 		String host = "", port = "", secretID = "", secretKey = "", file = "";
 		String name = "", type = "视频", tag = "新闻", secondTag = "", lang = "普通话";
-		int projectID = 1, businessID = 1, threads = 1;
+		long projectID = 2147483648L, businessID = 1;
+		int threads = 1;
 		try {
 			CommandLine commandLine = parser.parse(options, args);
 			if (commandLine.hasOption('h')) {
@@ -76,7 +77,7 @@ public class UploadMedia {
 			if (commandLine.hasOption('p')) {
 				String value = commandLine.getOptionValue('p');
 				try {
-					projectID = Integer.parseInt(value);
+					projectID = Long.parseLong(value);
 				} catch (NumberFormatException e) {
 					System.out.println("project_id 不是整数");
 					System.exit(-1);
@@ -84,7 +85,7 @@ public class UploadMedia {
 			}
 			if (commandLine.hasOption('b')) {
 				try {
-					businessID = Integer.parseInt(commandLine.getOptionValue('b'));
+					businessID = Long.parseLong(commandLine.getOptionValue('b'));
 				} catch (NumberFormatException e) {
 					System.out.println("business_id 不是整数");
 					System.exit(-1);

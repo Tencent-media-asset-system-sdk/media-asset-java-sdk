@@ -59,12 +59,12 @@ private static final long serialVersionUID = 0L;
           }
           case 16: {
             bitField0_ |= 0x00000002;
-            tIBusinessID_ = input.readInt32();
+            tIBusinessID_ = input.readUInt32();
             break;
           }
           case 24: {
             bitField0_ |= 0x00000004;
-            tIProjectID_ = input.readInt32();
+            tIProjectID_ = input.readUInt32();
             break;
           }
           case 32: {
@@ -72,7 +72,7 @@ private static final long serialVersionUID = 0L;
               mediaIDSet_ = newIntList();
               mutable_bitField0_ |= 0x00000008;
             }
-            mediaIDSet_.addInt(input.readUInt32());
+            mediaIDSet_.addInt(input.readInt32());
             break;
           }
           case 34: {
@@ -83,7 +83,7 @@ private static final long serialVersionUID = 0L;
               mutable_bitField0_ |= 0x00000008;
             }
             while (input.getBytesUntilLimit() > 0) {
-              mediaIDSet_.addInt(input.readUInt32());
+              mediaIDSet_.addInt(input.readInt32());
             }
             input.popLimit(limit);
             break;
@@ -173,7 +173,7 @@ private static final long serialVersionUID = 0L;
   public static final int TIBUSINESSID_FIELD_NUMBER = 2;
   private int tIBusinessID_;
   /**
-   * <code>optional int32 TIBusinessID = 2;</code>
+   * <code>optional uint32 TIBusinessID = 2;</code>
    * @return Whether the tIBusinessID field is set.
    */
   @java.lang.Override
@@ -181,7 +181,7 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000002) != 0);
   }
   /**
-   * <code>optional int32 TIBusinessID = 2;</code>
+   * <code>optional uint32 TIBusinessID = 2;</code>
    * @return The tIBusinessID.
    */
   @java.lang.Override
@@ -192,7 +192,7 @@ private static final long serialVersionUID = 0L;
   public static final int TIPROJECTID_FIELD_NUMBER = 3;
   private int tIProjectID_;
   /**
-   * <code>optional int32 TIProjectID = 3;</code>
+   * <code>optional uint32 TIProjectID = 3;</code>
    * @return Whether the tIProjectID field is set.
    */
   @java.lang.Override
@@ -200,7 +200,7 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000004) != 0);
   }
   /**
-   * <code>optional int32 TIProjectID = 3;</code>
+   * <code>optional uint32 TIProjectID = 3;</code>
    * @return The tIProjectID.
    */
   @java.lang.Override
@@ -211,7 +211,7 @@ private static final long serialVersionUID = 0L;
   public static final int MEDIAIDSET_FIELD_NUMBER = 4;
   private com.google.protobuf.Internal.IntList mediaIDSet_;
   /**
-   * <code>repeated uint32 MediaIDSet = 4;</code>
+   * <code>repeated int32 MediaIDSet = 4;</code>
    * @return A list containing the mediaIDSet.
    */
   @java.lang.Override
@@ -220,14 +220,14 @@ private static final long serialVersionUID = 0L;
     return mediaIDSet_;
   }
   /**
-   * <code>repeated uint32 MediaIDSet = 4;</code>
+   * <code>repeated int32 MediaIDSet = 4;</code>
    * @return The count of mediaIDSet.
    */
   public int getMediaIDSetCount() {
     return mediaIDSet_.size();
   }
   /**
-   * <code>repeated uint32 MediaIDSet = 4;</code>
+   * <code>repeated int32 MediaIDSet = 4;</code>
    * @param index The index of the element to return.
    * @return The mediaIDSet at the given index.
    */
@@ -255,17 +255,17 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, action_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeInt32(2, tIBusinessID_);
+      output.writeUInt32(2, tIBusinessID_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeInt32(3, tIProjectID_);
+      output.writeUInt32(3, tIProjectID_);
     }
     if (getMediaIDSetList().size() > 0) {
       output.writeUInt32NoTag(34);
       output.writeUInt32NoTag(mediaIDSetMemoizedSerializedSize);
     }
     for (int i = 0; i < mediaIDSet_.size(); i++) {
-      output.writeUInt32NoTag(mediaIDSet_.getInt(i));
+      output.writeInt32NoTag(mediaIDSet_.getInt(i));
     }
     unknownFields.writeTo(output);
   }
@@ -281,17 +281,17 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, tIBusinessID_);
+        .computeUInt32Size(2, tIBusinessID_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, tIProjectID_);
+        .computeUInt32Size(3, tIProjectID_);
     }
     {
       int dataSize = 0;
       for (int i = 0; i < mediaIDSet_.size(); i++) {
         dataSize += com.google.protobuf.CodedOutputStream
-          .computeUInt32SizeNoTag(mediaIDSet_.getInt(i));
+          .computeInt32SizeNoTag(mediaIDSet_.getInt(i));
       }
       size += dataSize;
       if (!getMediaIDSetList().isEmpty()) {
@@ -731,7 +731,7 @@ private static final long serialVersionUID = 0L;
 
     private int tIBusinessID_ ;
     /**
-     * <code>optional int32 TIBusinessID = 2;</code>
+     * <code>optional uint32 TIBusinessID = 2;</code>
      * @return Whether the tIBusinessID field is set.
      */
     @java.lang.Override
@@ -739,7 +739,7 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional int32 TIBusinessID = 2;</code>
+     * <code>optional uint32 TIBusinessID = 2;</code>
      * @return The tIBusinessID.
      */
     @java.lang.Override
@@ -747,7 +747,7 @@ private static final long serialVersionUID = 0L;
       return tIBusinessID_;
     }
     /**
-     * <code>optional int32 TIBusinessID = 2;</code>
+     * <code>optional uint32 TIBusinessID = 2;</code>
      * @param value The tIBusinessID to set.
      * @return This builder for chaining.
      */
@@ -758,7 +758,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>optional int32 TIBusinessID = 2;</code>
+     * <code>optional uint32 TIBusinessID = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearTIBusinessID() {
@@ -770,7 +770,7 @@ private static final long serialVersionUID = 0L;
 
     private int tIProjectID_ ;
     /**
-     * <code>optional int32 TIProjectID = 3;</code>
+     * <code>optional uint32 TIProjectID = 3;</code>
      * @return Whether the tIProjectID field is set.
      */
     @java.lang.Override
@@ -778,7 +778,7 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>optional int32 TIProjectID = 3;</code>
+     * <code>optional uint32 TIProjectID = 3;</code>
      * @return The tIProjectID.
      */
     @java.lang.Override
@@ -786,7 +786,7 @@ private static final long serialVersionUID = 0L;
       return tIProjectID_;
     }
     /**
-     * <code>optional int32 TIProjectID = 3;</code>
+     * <code>optional uint32 TIProjectID = 3;</code>
      * @param value The tIProjectID to set.
      * @return This builder for chaining.
      */
@@ -797,7 +797,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>optional int32 TIProjectID = 3;</code>
+     * <code>optional uint32 TIProjectID = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearTIProjectID() {
@@ -815,7 +815,7 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
-     * <code>repeated uint32 MediaIDSet = 4;</code>
+     * <code>repeated int32 MediaIDSet = 4;</code>
      * @return A list containing the mediaIDSet.
      */
     public java.util.List<java.lang.Integer>
@@ -824,14 +824,14 @@ private static final long serialVersionUID = 0L;
                java.util.Collections.unmodifiableList(mediaIDSet_) : mediaIDSet_;
     }
     /**
-     * <code>repeated uint32 MediaIDSet = 4;</code>
+     * <code>repeated int32 MediaIDSet = 4;</code>
      * @return The count of mediaIDSet.
      */
     public int getMediaIDSetCount() {
       return mediaIDSet_.size();
     }
     /**
-     * <code>repeated uint32 MediaIDSet = 4;</code>
+     * <code>repeated int32 MediaIDSet = 4;</code>
      * @param index The index of the element to return.
      * @return The mediaIDSet at the given index.
      */
@@ -839,7 +839,7 @@ private static final long serialVersionUID = 0L;
       return mediaIDSet_.getInt(index);
     }
     /**
-     * <code>repeated uint32 MediaIDSet = 4;</code>
+     * <code>repeated int32 MediaIDSet = 4;</code>
      * @param index The index to set the value at.
      * @param value The mediaIDSet to set.
      * @return This builder for chaining.
@@ -852,7 +852,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated uint32 MediaIDSet = 4;</code>
+     * <code>repeated int32 MediaIDSet = 4;</code>
      * @param value The mediaIDSet to add.
      * @return This builder for chaining.
      */
@@ -863,7 +863,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated uint32 MediaIDSet = 4;</code>
+     * <code>repeated int32 MediaIDSet = 4;</code>
      * @param values The mediaIDSet to add.
      * @return This builder for chaining.
      */
@@ -876,7 +876,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated uint32 MediaIDSet = 4;</code>
+     * <code>repeated int32 MediaIDSet = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearMediaIDSet() {

@@ -61,12 +61,12 @@ private static final long serialVersionUID = 0L;
           }
           case 16: {
             bitField0_ |= 0x00000002;
-            tIBusinessID_ = input.readInt32();
+            tIBusinessID_ = input.readUInt32();
             break;
           }
           case 24: {
             bitField0_ |= 0x00000004;
-            tIProjectID_ = input.readInt32();
+            tIProjectID_ = input.readUInt32();
             break;
           }
           case 34: {
@@ -192,7 +192,7 @@ private static final long serialVersionUID = 0L;
   public static final int TIBUSINESSID_FIELD_NUMBER = 2;
   private int tIBusinessID_;
   /**
-   * <code>optional int32 TIBusinessID = 2;</code>
+   * <code>optional uint32 TIBusinessID = 2;</code>
    * @return Whether the tIBusinessID field is set.
    */
   @java.lang.Override
@@ -200,7 +200,7 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000002) != 0);
   }
   /**
-   * <code>optional int32 TIBusinessID = 2;</code>
+   * <code>optional uint32 TIBusinessID = 2;</code>
    * @return The tIBusinessID.
    */
   @java.lang.Override
@@ -211,7 +211,7 @@ private static final long serialVersionUID = 0L;
   public static final int TIPROJECTID_FIELD_NUMBER = 3;
   private int tIProjectID_;
   /**
-   * <code>optional int32 TIProjectID = 3;</code>
+   * <code>optional uint32 TIProjectID = 3;</code>
    * @return Whether the tIProjectID field is set.
    */
   @java.lang.Override
@@ -219,7 +219,7 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000004) != 0);
   }
   /**
-   * <code>optional int32 TIProjectID = 3;</code>
+   * <code>optional uint32 TIProjectID = 3;</code>
    * @return The tIProjectID.
    */
   @java.lang.Override
@@ -447,10 +447,10 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, action_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeInt32(2, tIBusinessID_);
+      output.writeUInt32(2, tIBusinessID_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeInt32(3, tIProjectID_);
+      output.writeUInt32(3, tIProjectID_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, name_);
@@ -484,11 +484,11 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, tIBusinessID_);
+        .computeUInt32Size(2, tIBusinessID_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, tIProjectID_);
+        .computeUInt32Size(3, tIProjectID_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, name_);
@@ -1042,7 +1042,7 @@ private static final long serialVersionUID = 0L;
 
     private int tIBusinessID_ ;
     /**
-     * <code>optional int32 TIBusinessID = 2;</code>
+     * <code>optional uint32 TIBusinessID = 2;</code>
      * @return Whether the tIBusinessID field is set.
      */
     @java.lang.Override
@@ -1050,7 +1050,7 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000002) != 0);
     }
     /**
-     * <code>optional int32 TIBusinessID = 2;</code>
+     * <code>optional uint32 TIBusinessID = 2;</code>
      * @return The tIBusinessID.
      */
     @java.lang.Override
@@ -1058,7 +1058,7 @@ private static final long serialVersionUID = 0L;
       return tIBusinessID_;
     }
     /**
-     * <code>optional int32 TIBusinessID = 2;</code>
+     * <code>optional uint32 TIBusinessID = 2;</code>
      * @param value The tIBusinessID to set.
      * @return This builder for chaining.
      */
@@ -1069,7 +1069,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>optional int32 TIBusinessID = 2;</code>
+     * <code>optional uint32 TIBusinessID = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearTIBusinessID() {
@@ -1081,7 +1081,7 @@ private static final long serialVersionUID = 0L;
 
     private int tIProjectID_ ;
     /**
-     * <code>optional int32 TIProjectID = 3;</code>
+     * <code>optional uint32 TIProjectID = 3;</code>
      * @return Whether the tIProjectID field is set.
      */
     @java.lang.Override
@@ -1089,7 +1089,7 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>optional int32 TIProjectID = 3;</code>
+     * <code>optional uint32 TIProjectID = 3;</code>
      * @return The tIProjectID.
      */
     @java.lang.Override
@@ -1097,7 +1097,7 @@ private static final long serialVersionUID = 0L;
       return tIProjectID_;
     }
     /**
-     * <code>optional int32 TIProjectID = 3;</code>
+     * <code>optional uint32 TIProjectID = 3;</code>
      * @param value The tIProjectID to set.
      * @return This builder for chaining.
      */
@@ -1108,7 +1108,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>optional int32 TIProjectID = 3;</code>
+     * <code>optional uint32 TIProjectID = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearTIProjectID() {
