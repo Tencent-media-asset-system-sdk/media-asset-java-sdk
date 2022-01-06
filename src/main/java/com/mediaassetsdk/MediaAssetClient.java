@@ -905,4 +905,14 @@ public class MediaAssetClient {
 		}
 
 	}
+	
+	public static boolean checkStatusFailed(String state) {
+		return state == com.mediaassetsdk.MediaState.FAILED.toString() ||
+				state == com.mediaassetsdk.MediaState.DELETED.toString() ||
+				state==	com.mediaassetsdk.MediaState.CLEANED.toString();
+	}
+	
+	public static boolean checkStatusSuccess(String state) {
+		return state == com.mediaassetsdk.MediaState.COMPLETED.toString();
+	}
 }
