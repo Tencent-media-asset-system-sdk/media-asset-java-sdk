@@ -69,9 +69,9 @@ private static final long serialVersionUID = 0L;
             name_ = s;
             break;
           }
-          case 24: {
+          case 29: {
             bitField0_ |= 0x00000004;
-            duration_ = input.readUInt32();
+            duration_ = input.readFloat();
             break;
           }
           case 32: {
@@ -89,9 +89,9 @@ private static final long serialVersionUID = 0L;
             height_ = input.readUInt32();
             break;
           }
-          case 56: {
+          case 61: {
             bitField0_ |= 0x00000040;
-            fPS_ = input.readUInt32();
+            fPS_ = input.readFloat();
             break;
           }
           case 64: {
@@ -246,9 +246,9 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int DURATION_FIELD_NUMBER = 3;
-  private int duration_;
+  private float duration_;
   /**
-   * <code>optional uint32 Duration = 3;</code>
+   * <code>optional float Duration = 3;</code>
    * @return Whether the duration field is set.
    */
   @java.lang.Override
@@ -256,11 +256,11 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000004) != 0);
   }
   /**
-   * <code>optional uint32 Duration = 3;</code>
+   * <code>optional float Duration = 3;</code>
    * @return The duration.
    */
   @java.lang.Override
-  public int getDuration() {
+  public float getDuration() {
     return duration_;
   }
 
@@ -322,9 +322,9 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int FPS_FIELD_NUMBER = 7;
-  private int fPS_;
+  private float fPS_;
   /**
-   * <code>optional uint32 FPS = 7;</code>
+   * <code>optional float FPS = 7;</code>
    * @return Whether the fPS field is set.
    */
   @java.lang.Override
@@ -332,11 +332,11 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000040) != 0);
   }
   /**
-   * <code>optional uint32 FPS = 7;</code>
+   * <code>optional float FPS = 7;</code>
    * @return The fPS.
    */
   @java.lang.Override
-  public int getFPS() {
+  public float getFPS() {
     return fPS_;
   }
 
@@ -748,7 +748,7 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
     }
     if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeUInt32(3, duration_);
+      output.writeFloat(3, duration_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
       output.writeUInt32(4, size_);
@@ -760,7 +760,7 @@ private static final long serialVersionUID = 0L;
       output.writeUInt32(6, height_);
     }
     if (((bitField0_ & 0x00000040) != 0)) {
-      output.writeUInt32(7, fPS_);
+      output.writeFloat(7, fPS_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
       output.writeUInt32(8, bitRate_);
@@ -807,7 +807,7 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(3, duration_);
+        .computeFloatSize(3, duration_);
     }
     if (((bitField0_ & 0x00000008) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -823,7 +823,7 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000040) != 0)) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(7, fPS_);
+        .computeFloatSize(7, fPS_);
     }
     if (((bitField0_ & 0x00000080) != 0)) {
       size += com.google.protobuf.CodedOutputStream
@@ -880,8 +880,9 @@ private static final long serialVersionUID = 0L;
     }
     if (hasDuration() != other.hasDuration()) return false;
     if (hasDuration()) {
-      if (getDuration()
-          != other.getDuration()) return false;
+      if (java.lang.Float.floatToIntBits(getDuration())
+          != java.lang.Float.floatToIntBits(
+              other.getDuration())) return false;
     }
     if (hasSize() != other.hasSize()) return false;
     if (hasSize()) {
@@ -900,8 +901,9 @@ private static final long serialVersionUID = 0L;
     }
     if (hasFPS() != other.hasFPS()) return false;
     if (hasFPS()) {
-      if (getFPS()
-          != other.getFPS()) return false;
+      if (java.lang.Float.floatToIntBits(getFPS())
+          != java.lang.Float.floatToIntBits(
+              other.getFPS())) return false;
     }
     if (hasBitRate() != other.hasBitRate()) return false;
     if (hasBitRate()) {
@@ -969,7 +971,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasDuration()) {
       hash = (37 * hash) + DURATION_FIELD_NUMBER;
-      hash = (53 * hash) + getDuration();
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getDuration());
     }
     if (hasSize()) {
       hash = (37 * hash) + SIZE_FIELD_NUMBER;
@@ -985,7 +988,8 @@ private static final long serialVersionUID = 0L;
     }
     if (hasFPS()) {
       hash = (37 * hash) + FPS_FIELD_NUMBER;
-      hash = (53 * hash) + getFPS();
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getFPS());
     }
     if (hasBitRate()) {
       hash = (37 * hash) + BITRATE_FIELD_NUMBER;
@@ -1160,7 +1164,7 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       name_ = "";
       bitField0_ = (bitField0_ & ~0x00000002);
-      duration_ = 0;
+      duration_ = 0F;
       bitField0_ = (bitField0_ & ~0x00000004);
       size_ = 0;
       bitField0_ = (bitField0_ & ~0x00000008);
@@ -1168,7 +1172,7 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000010);
       height_ = 0;
       bitField0_ = (bitField0_ & ~0x00000020);
-      fPS_ = 0;
+      fPS_ = 0F;
       bitField0_ = (bitField0_ & ~0x00000040);
       bitRate_ = 0;
       bitField0_ = (bitField0_ & ~0x00000080);
@@ -1547,9 +1551,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int duration_ ;
+    private float duration_ ;
     /**
-     * <code>optional uint32 Duration = 3;</code>
+     * <code>optional float Duration = 3;</code>
      * @return Whether the duration field is set.
      */
     @java.lang.Override
@@ -1557,31 +1561,31 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>optional uint32 Duration = 3;</code>
+     * <code>optional float Duration = 3;</code>
      * @return The duration.
      */
     @java.lang.Override
-    public int getDuration() {
+    public float getDuration() {
       return duration_;
     }
     /**
-     * <code>optional uint32 Duration = 3;</code>
+     * <code>optional float Duration = 3;</code>
      * @param value The duration to set.
      * @return This builder for chaining.
      */
-    public Builder setDuration(int value) {
+    public Builder setDuration(float value) {
       bitField0_ |= 0x00000004;
       duration_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional uint32 Duration = 3;</code>
+     * <code>optional float Duration = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearDuration() {
       bitField0_ = (bitField0_ & ~0x00000004);
-      duration_ = 0;
+      duration_ = 0F;
       onChanged();
       return this;
     }
@@ -1703,9 +1707,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int fPS_ ;
+    private float fPS_ ;
     /**
-     * <code>optional uint32 FPS = 7;</code>
+     * <code>optional float FPS = 7;</code>
      * @return Whether the fPS field is set.
      */
     @java.lang.Override
@@ -1713,31 +1717,31 @@ private static final long serialVersionUID = 0L;
       return ((bitField0_ & 0x00000040) != 0);
     }
     /**
-     * <code>optional uint32 FPS = 7;</code>
+     * <code>optional float FPS = 7;</code>
      * @return The fPS.
      */
     @java.lang.Override
-    public int getFPS() {
+    public float getFPS() {
       return fPS_;
     }
     /**
-     * <code>optional uint32 FPS = 7;</code>
+     * <code>optional float FPS = 7;</code>
      * @param value The fPS to set.
      * @return This builder for chaining.
      */
-    public Builder setFPS(int value) {
+    public Builder setFPS(float value) {
       bitField0_ |= 0x00000040;
       fPS_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>optional uint32 FPS = 7;</code>
+     * <code>optional float FPS = 7;</code>
      * @return This builder for chaining.
      */
     public Builder clearFPS() {
       bitField0_ = (bitField0_ & ~0x00000040);
-      fPS_ = 0;
+      fPS_ = 0F;
       onChanged();
       return this;
     }

@@ -54,11 +54,11 @@ message Label {
 message MediaInfo {
   optional uint32 MediaID = 1;
   optional string Name = 2;
-  optional uint32 Duration = 3;
+  optional float Duration = 3;
   optional uint32 Size = 4;
   optional uint32 Width = 5;
   optional uint32 Height = 6;
-  optional uint32 FPS = 7;
+  optional float FPS = 7;
   optional uint32 BitRate = 8;
   optional string Format = 9;
   optional string MediaType = 10;

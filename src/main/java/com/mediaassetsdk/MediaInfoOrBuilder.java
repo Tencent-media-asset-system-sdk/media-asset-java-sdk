@@ -36,15 +36,15 @@ public interface MediaInfoOrBuilder extends
       getNameBytes();
 
   /**
-   * <code>optional uint32 Duration = 3;</code>
+   * <code>optional float Duration = 3;</code>
    * @return Whether the duration field is set.
    */
   boolean hasDuration();
   /**
-   * <code>optional uint32 Duration = 3;</code>
+   * <code>optional float Duration = 3;</code>
    * @return The duration.
    */
-  int getDuration();
+  float getDuration();
 
   /**
    * <code>optional uint32 Size = 4;</code>
@@ -80,15 +80,15 @@ public interface MediaInfoOrBuilder extends
   int getHeight();
 
   /**
-   * <code>optional uint32 FPS = 7;</code>
+   * <code>optional float FPS = 7;</code>
    * @return Whether the fPS field is set.
    */
   boolean hasFPS();
   /**
-   * <code>optional uint32 FPS = 7;</code>
+   * <code>optional float FPS = 7;</code>
    * @return The fPS.
    */
-  int getFPS();
+  float getFPS();
 
   /**
    * <code>optional uint32 BitRate = 8;</code>
