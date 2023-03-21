@@ -56,8 +56,11 @@ public class MediaAssetClient {
 	// 项目 ID
 	private long tiProjectID;
 
+	// 请求协议 http 或者 https
+	private String protocol;
+	
 	private void makeEndPoint() {
-		this.endPoint = "http://" + this.host;
+		this.endPoint = protocol + "://" + this.host;
 		if (this.port != "") {
 			this.endPoint += ":" + this.port;
 		}
@@ -90,7 +93,7 @@ public class MediaAssetClient {
 	}
 
 	public MediaAssetClient(String host, String port, String secretID, String secretKey, long tiBusinessID,
-			long tiProjectID) {
+			long tiProjectID, String protocol) {
 		super();
 		this.host = host;
 		this.port = port;
@@ -98,6 +101,12 @@ public class MediaAssetClient {
 		this.secretKey = secretKey;
 		this.tiBusinessID = tiBusinessID;
 		this.tiProjectID = tiProjectID;
+		if (protocol == "https") {
+			this.protocol = "https";
+		} else {
+			this.protocol = "http";
+		}
+		
 		this.makeEndPoint();
 	}
 

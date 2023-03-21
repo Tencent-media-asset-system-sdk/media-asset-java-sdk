@@ -23,7 +23,7 @@ public class UploadMedia {
 		System.out.print(helpStr);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MediaAssetException, InterruptedException {
 		// Create a Parser
 		CommandLineParser parser = new BasicParser();
 		Options options = new Options();
@@ -114,8 +114,9 @@ public class UploadMedia {
 			printHelp(args, options);
 			System.exit(-1);
 		}
-		MediaAssetClient client = new MediaAssetClient(host, "", secretID, secretKey, businessID, projectID);
+		MediaAssetClient client = new MediaAssetClient(host, "", secretID, secretKey, businessID, projectID, "https");
 		try {
+//			client.downLoadToFile("/DownloadFile?Key=upload%2Fd0%2F78%2F707f9845eb08eaf74e4af6-nYg60H4Luu3RXN3FU4BTo9F3dBB0YC1K&Token=840bc1b625c54c3416f0b0a40d1de9f9&IsTemp=false", "/Users/willzhen/Desktop", "test.jpg");
 			int mediaID = client.uploadFile(file, name, type, tag, secondTag, lang, threads);
 			System.out.printf("Upload %s success, mediaID: %d\n", file, mediaID);
 			
@@ -133,13 +134,13 @@ public class UploadMedia {
 //			client.modifyExpireTime(com.mediaassetsdk.ModifyExpireTimeRequest.newBuilder().setMediaID(mediaID)
 //					.setDays(1).build());
 
-//			com.mediaassetsdk.DescribeMediasResponse rsp1 = client.describeMedias(
-//					com.mediaassetsdk.DescribeMediasRequest.newBuilder().setPageNumber(1)
-//					.setPageSize(20)
+			com.mediaassetsdk.DescribeMediasResponse rsp1 = client.describeMedias(
+					com.mediaassetsdk.DescribeMediasRequest.newBuilder().setPageNumber(0)
+					.setPageSize(20)
 //					.setFilterBy(com.mediaassetsdk.FilterBy.newBuilder().setMediaNameOrID(name))
-//					.build());
-//			String lists = JsonFormat.printer().print(rsp1);
-//			System.out.println("lists response: " + lists);
+					.build());
+			String lists = JsonFormat.printer().print(rsp1);
+			System.out.println("lists response: " + lists);
 			
 //			com.mediaassetsdk.UploadMedia media = com.mediaassetsdk.UploadMedia.newBuilder().setName("Java URL上传")
 //					.setMediaURL("https://ai-media-1300074211.cos.ap-shanghai.myqcloud.com/ai-media/2021-04-06/8b46057e-1923-4444-b0fb-91b094bf7530_trans.mp4")
@@ -154,12 +155,6 @@ public class UploadMedia {
 		} catch (IOException e) {
 			System.out.println("UploadFile error: " + e.toString());
 			e.printStackTrace();
-		} catch (MediaAssetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 	}
 }
